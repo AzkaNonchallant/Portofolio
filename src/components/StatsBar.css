@@ -1,0 +1,25 @@
+.stats-bar {
+  display: flex;
+  list-style: none;
+  background: var(--pink);
+  border: var(--border-thick) solid var(--ink);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.stats-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  color: var(--cream-soft);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-right: var(--border-thin) solid var(--ink);
+}
+
+.stats-bar__item:last-child {
+  border-right: none;
+}

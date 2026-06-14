@@ -1,0 +1,123 @@
+/* ==========================================================================
+   BackgroundDecor.css
+   ========================================================================== */
+
+/* Container Utama Background */
+.decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Base Class untuk Semua Komponen Bentuk */
+.decor__shape {
+  position: absolute;
+  transform-origin: center;
+  will-change: transform; /* Mengoptimalkan performa animasi rendering di browser */
+}
+
+/* Pewarnaan Karakter Tema (Menggunakan CSS Variables) */
+.decor__shape--pink {
+  color: var(--pink, #ff60b5);
+}
+.decor__shape--cream {
+  color: var(--cream, #f7e1c6);
+}
+.decor__shape--yellow {
+  color: var(--yellow, #fbc63a);
+}
+
+/* Kustomisasi Posisi, Ukuran, dan Variasi Gerakan Tiap Objek
+   -------------------------------------------------------------------------- */
+
+/* Objek A: Bintang Pink Besar di Kiri Atas */
+.decor__shape--a {
+  top: 4%;
+  left: 6%;
+  width: 46px;
+  height: 46px;
+  animation: decor-float-up 8s ease-in-out infinite;
+}
+
+/* Objek B: Bintang Cream Besar di Kanan Atas */
+.decor__shape--b {
+  top: 8%;
+  right: 10%;
+  width: 56px;
+  height: 56px;
+  animation: decor-float-side 9s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+/* Objek C: Kotak/Diamond Kuning Kecil di Kanan Tengah */
+.decor__shape--c {
+  top: 38%;
+  right: 4%;
+  width: 26px;
+  height: 26px;
+  animation: decor-float-diagonal 6s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* Objek D: Segitiga Cream Sedang di Kiri Bawah */
+.decor__shape--d {
+  bottom: 18%;
+  left: 3%;
+  width: 30px;
+  height: 30px;
+  animation: decor-float-up 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Objek E: Kotak/Diamond Pink Kecil di Kanan Bawah */
+.decor__shape--e {
+  bottom: 6%;
+  right: 16%;
+  width: 24px;
+  height: 24px;
+  animation: decor-float-side 5s ease-in-out infinite;
+  animation-delay: 0.9s;
+}
+
+/* Objek F: Bintang Kuning Sedang di Tengah Bawah */
+.decor__shape--f {
+  bottom: 4%;
+  left: 42%;
+  width: 38px;
+  height: 38px;
+  animation: decor-float-diagonal 10s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+
+
+@keyframes decor-float-up {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(15deg);
+  }
+}
+
+
+@keyframes decor-float-side {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(18px) rotate(-25deg);
+  }
+}
+
+/* Gerakan 3: Gerakan Diagonal Serong + Ayunan Lembut */
+@keyframes decor-float-diagonal {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-12px, -15px) rotate(12deg);
+  }
+}

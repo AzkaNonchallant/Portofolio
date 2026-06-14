@@ -1,0 +1,45 @@
+import {
+  Shuffle,
+  Camera,
+  LayoutGrid,
+  ListMusic,
+  Film,
+  Star,
+  Home,
+  User,
+  Phone,
+} from 'lucide-react'
+import './NavBar.css'
+
+const NAV_ITEMS = [
+  { icon: Home, label: 'Beranda' },
+  { icon: Phone, label:'About'},
+  { icon: LayoutGrid, label: 'Semua proyek' },
+  { icon: User, label: 'Contact Me' },
+  
+]
+
+export default function NavBar() {
+  return (
+    <nav className="navbar" aria-label="Navigasi utama">
+      <ul className="navbar__icons">
+        {NAV_ITEMS.map(({ icon: Icon, label }) => (
+          <li key={label}>
+            <button type="button" className="navbar__btn" title={label}>
+              <Icon size={16} strokeWidth={2.5} aria-hidden="true" />
+              <span className="sr-only">{label}</span>
+            </button>
+          </li>
+        ))}
+        <li className="navbar__avatar" aria-hidden="true">
+          <div className="navbar__avatar-img" />
+        </li>
+      </ul>
+
+      <div className="navbar__page">
+        <span className="navbar__page-mark">Az</span>
+        <span className="navbar__page-num">K4</span>
+      </div>
+    </nav>
+  )
+}

@@ -1,0 +1,104 @@
+/* =========================================================
+   DESIGN TOKENS — "Retro Pop Fancard" system
+   Inspired by 2000s pop-magazine / comic UI fancards
+   ========================================================= */
+:root {
+  /* Color */
+  --blue: #611C35;
+  --red-deep: #4A1529;
+  --blue-deep: #0e4d8e;
+  --cream: #F4E7D2;
+  --cream-soft: #FBF4E8;
+  --pink: #D46A8C;
+  --pink-dark: #B14C6E;
+  --yellow: #D6A548;
+  --tan: #C8A77A;
+  --ink: #1F1B1B;
+
+  /* Type */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Baloo 2', 'Segoe UI', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  /* Shape */
+  --radius-card: 28px;
+  --radius-pill: 999px;
+  --border-thick: 3px;
+  --border-thin: 2px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--blue);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+/* Halftone dot texture used on blue surfaces, comic-print style */
+.halftone {
+  position: relative;
+  background-color: var(--blue);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.16) 1.4px,
+    transparent 1.6px
+  );
+  background-size: 13px 13px;
+}
+
+.halftone--deep {
+  background-color: var(--red-deep);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1.4px,
+    transparent 1.6px
+  );
+  background-size: 11px 11px;
+}
+
+/* Hard comic outline used across cards / chips / buttons */
+.outline {
+  border: var(--border-thick) solid var(--ink);
+}
+
+/* Visible focus ring for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

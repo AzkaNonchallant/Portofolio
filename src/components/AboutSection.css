@@ -1,0 +1,112 @@
+.about {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 920px);
+  margin: 28px auto 0;
+  background: var(--cream);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 0 0 6px var(--cream-soft),
+    0 0 0 9px var(--ink),
+    0 18px 40px rgba(14, 38, 66, 0.35);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 28px;
+}
+
+.about-section {
+  flex: 1;
+}
+
+.about__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pink-dark);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.about__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--blue-deep);
+}
+
+.about__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.about__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.about__skill {
+  padding: 6px 14px;
+  border: var(--border-thin) solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--blue-deep);
+  color: var(--cream-soft);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.about__project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.about__all {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: var(--border-thin) solid var(--cream);
+  border-radius: 14px;
+  background-color: var(--yellow) ;
+  color: var(--cream-soft);
+}
+
+.about__project {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: var(--border-thin) solid var(--ink);
+  border-radius: 14px;
+  color: var(--cream-soft);
+}
+
+.about__project-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.about__project-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 720px) {
+  .about {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+}
