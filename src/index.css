@@ -4,16 +4,16 @@
    ========================================================= */
 :root {
   /* Color */
-  --blue: #611C35;
-  --red-deep: #4A1529;
-  --blue-deep: #0e4d8e;
-  --cream: #F4E7D2;
-  --cream-soft: #FBF4E8;
-  --pink: #D46A8C;
-  --pink-dark: #B14C6E;
-  --yellow: #D6A548;
-  --tan: #C8A77A;
-  --ink: #1F1B1B;
+  --blue: #0B3C5D;
+  --red-deep: #072A40;
+  --blue-deep: #145DA0;
+  --cream: #EAF6FF;
+  --cream-soft: #F5FBFF;
+  --pink: #4DB6AC;
+  --pink-dark: #2E8B83;
+  --yellow: #7DD3FC;
+  --tan: #6EC6FF;
+  --ink: #0F172A;
 
   /* Type */
   --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
@@ -92,7 +92,7 @@ a {
 }
 
 /* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
@@ -101,4 +101,4 @@ a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-}
+} */

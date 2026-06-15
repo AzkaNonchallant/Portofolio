@@ -2,6 +2,7 @@
   position: relative;
   min-height: 100vh;
   padding: 40px 16px 56px;
+  animation: fadeUp 0.4s ease both;
   overflow-x: hidden;
 }
 
@@ -10,19 +11,41 @@
   z-index: 1;
 }
 
-.hero-section {
-  display: flex;
-  align-items: stretch;
-  gap: 30px;
+@media (max-width: 720px) {
+  .hero-section {
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 16px;
+    border-radius: 18px;
+  }
 
-  border: 3px solid #222;
-  border-radius: 30px;
-  padding: 30px;
+  .hero-section > .profile-card {
+    flex: 1 1 260px;  
+    min-width: 0;
+  }
+
+  .hero-section > .about-section {
+    flex: 1 1 260px;  /* turunkan dari 300px */
+    min-width: 0;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .page {
+    padding: 16px 10px 40px;
+
+  }
 }
 
-.divider {
-  width: 2px;
-  background: #222;
-  border-radius: 999px;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-

@@ -1,31 +1,27 @@
-import {
-  Shuffle,
-  Camera,
-  LayoutGrid,
-  ListMusic,
-  Film,
-  Star,
-  Home,
-  User,
-  Phone,
-} from 'lucide-react'
+import { LayoutGrid, Home, User, Phone } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import './NavBar.css'
 
 const NAV_ITEMS = [
-  { icon: Home, label: 'Beranda' },
-  { icon: Phone, label:'About'},
-  { icon: LayoutGrid, label: 'Semua proyek' },
-  { icon: User, label: 'Contact Me' },
-  
+  { icon: User,      label: 'About',       path: '/about'    },
+  { icon: LayoutGrid, label: 'Semua proyek',path: '/projects' },
+  { icon: Phone, label: 'Contact Me',path: '/contact' },
 ]
 
 export default function NavBar() {
+  const navigate = useNavigate()
+
   return (
     <nav className="navbar" aria-label="Navigasi utama">
       <ul className="navbar__icons">
-        {NAV_ITEMS.map(({ icon: Icon, label }) => (
+        {NAV_ITEMS.map(({ icon: Icon, label, path }) => (
           <li key={label}>
-            <button type="button" className="navbar__btn" title={label}>
+            <button
+              type="button"
+              className="navbar__btn"
+              title={label}
+              onClick={() => navigate(path)}
+            >
               <Icon size={16} strokeWidth={2.5} aria-hidden="true" />
               <span className="sr-only">{label}</span>
             </button>

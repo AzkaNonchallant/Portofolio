@@ -6,7 +6,7 @@
   background: var(--cream);
   border-radius: var(--radius-card);
   box-shadow:
-    0 0 0 6px var(--cream-soft),
+    0 0 0 6px var(--yellow),
     0 0 0 9px var(--ink),
     0 18px 40px rgba(14, 38, 66, 0.35);
   padding: 28px;
@@ -53,7 +53,7 @@
 
 .about__skill {
   padding: 6px 14px;
-  border: var(--border-thin) solid var(--ink);
+  border: var(--border-thin) solid var(--cream);
   border-radius: var(--radius-pill);
   background: var(--blue-deep);
   color: var(--cream-soft);
@@ -85,7 +85,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 14px 16px;
-  border: var(--border-thin) solid var(--ink);
+  border: var(--border-thin) solid var(--cream);
   border-radius: 14px;
   color: var(--cream-soft);
 }

@@ -1,27 +1,20 @@
-import BackgroundDecor from './components/BackgroundDecor.jsx'
-import ProfileCard from './components/ProfileCard.jsx'
-import AboutSection from './components/AboutSection.jsx'
-import SiteFooter from './components/SiteFooter.jsx'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import PageTransition from './components/PageTransition'
+import Projects from './pages/Project.jsx'
+import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'
 
 export default function App() {
   return (
-    <main className="page halftone">
-      <BackgroundDecor />
-
-      <div className="page__content">
-
-        {/* SECTION GABUNGAN */}
-        <section className="hero-section">
-          <ProfileCard />
-
-          <div className="divider"></div>
-
-          <AboutSection />
-        </section>
-
-        <SiteFooter />
-      </div>
-    </main>
+    <BrowserRouter>
+      <PageTransition>
+        <Routes>
+   
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about"    element={<About />} />
+          <Route path="/contact"  element={<Contact />} />
+        </Routes>
+      </PageTransition>
+    </BrowserRouter>
   )
 }

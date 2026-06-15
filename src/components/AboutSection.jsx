@@ -1,5 +1,6 @@
 import './AboutSection.css'
 
+
 const SKILLS = [
   'Dart',
   'JavaScript',

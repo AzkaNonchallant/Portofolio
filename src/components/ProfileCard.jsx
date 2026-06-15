@@ -37,7 +37,7 @@ export default function ProfileCard() {
         <div className="card__photo">
           <div className="card__photo-frame halftone--deep">
             <div className="card__photo-placeholder">
-              {/* Ganti background-image di ProfileCard.css dengan fotomu sendiri */}
+             
               <span className="card__photo-hint">Foto profil di sini</span>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function ProfileCard() {
         <div className="card__footer-block">
           <div>
             <span className="card__field-label">Years active</span>
-            <p className="card__years">2024 — Sekarang</p>
+            <p className="card__years">2024 — Now</p>
           </div>
 
           <div className="card__media">
