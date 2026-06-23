@@ -11,6 +11,29 @@
   z-index: 1;
 }
 
+/* PINDAH KE LUAR MEDIA QUERY */
+.window-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.window-layer .dwindow {
+  pointer-events: auto;
+}
+
+.window-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  pointer-events: none;
+}
+
+.window-layer .dwindow {
+  pointer-events: auto;
+}
+
 @media (max-width: 720px) {
   .hero-section {
     flex-wrap: wrap;
@@ -20,12 +43,12 @@
   }
 
   .hero-section > .profile-card {
-    flex: 1 1 260px;  
+    flex: 1 1 260px;
     min-width: 0;
   }
 
   .hero-section > .about-section {
-    flex: 1 1 260px;  /* turunkan dari 300px */
+    flex: 1 1 260px;
     min-width: 0;
   }
 
@@ -35,17 +58,7 @@
 
   .page {
     padding: 16px 10px 40px;
+  }
 
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  
 }

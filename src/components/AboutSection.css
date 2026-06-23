@@ -15,8 +15,10 @@
   gap: 28px;
 }
 
-.about-section {
-  flex: 1;
+/* LEFT */
+.about__intro {
+  display: flex;
+  flex-direction: column;
 }
 
 .about__eyebrow {
@@ -35,15 +37,17 @@
   font-size: clamp(1.4rem, 3vw, 2.1rem);
   line-height: 1.2;
   margin-bottom: 12px;
-  color: var(--blue-deep);
+  color: var(--red-deep);
 }
 
 .about__text {
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 18px;
+  color: var(--ink);
 }
 
+/* SKILLS */
 .about__skills {
   display: flex;
   flex-wrap: wrap;
@@ -52,14 +56,20 @@
 }
 
 .about__skill {
-  padding: 6px 14px;
-  border: var(--border-thin) solid var(--cream);
+  padding: 7px 14px;
+  border: 2px solid var(--ink);
   border-radius: var(--radius-pill);
-  background: var(--blue-deep);
+  background: var(--red-deep);
   color: var(--cream-soft);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
+}
+
+/* RIGHT */
+.about__projects {
+  display: flex;
+  flex-direction: column;
 }
 
 .about__project-list {
@@ -69,25 +79,43 @@
   list-style: none;
 }
 
-.about__all {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 14px 16px;
-  border: var(--border-thin) solid var(--cream);
-  border-radius: 14px;
-  background-color: var(--yellow) ;
-  color: var(--cream-soft);
-}
-
+/* PROJECT CARD */
 .about__project {
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 14px 16px;
-  border: var(--border-thin) solid var(--cream);
+  border: 2px solid var(--ink);
   border-radius: 14px;
+
+  /* INI YANG BIKIN KELIATAN */
+  background: var(--red-deep);
+
   color: var(--cream-soft);
+
+  transition: transform 0.2s ease;
+}
+
+.about__project:hover {
+  transform: translateY(-4px);
+}
+
+/* ALL PROJECT BUTTON */
+.about__all {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: var(--yellow);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.about__all:hover {
+  transform: translateX(4px);
 }
 
 .about__project-tag {
@@ -95,7 +123,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .about__project-title {
@@ -104,6 +132,7 @@
   letter-spacing: 0.02em;
 }
 
+/* MOBILE */
 @media (max-width: 720px) {
   .about {
     grid-template-columns: 1fr;

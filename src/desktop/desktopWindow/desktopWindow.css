@@ -1,0 +1,93 @@
+.dwindow {
+   position: fixed;
+  min-width: 340px;
+  max-width: min(90vw, 780px);
+  max-height: 80vh;
+  background: var(--cream, #faf6f0);
+  border-radius: 12px;
+  border: 2.5px solid var(--ink, #1a1a2e);
+  box-shadow:
+    0 0 0 4px var(--pink, #e8547a),
+    0 0 0 7px var(--ink, #1a1a2e),
+    0 16px 40px rgba(14, 38, 66, 0.45);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  transition: box-shadow 0.15s;
+}
+
+.dwindow--minimized {
+  min-width: 200px;
+  max-height: none;
+}
+
+.dwindow__titlebar {
+  display: flex;
+  
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--ink, #1a1a2e);
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.dwindow__titlebar:active {
+  cursor: grabbing;
+}
+
+.dwindow__title {
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream, #faf6f0);
+}
+
+.dwindow__controls {
+  display: flex;
+  gap: 6px;
+}
+
+.dwindow__btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.dwindow__btn--min {
+  background: var(--yellow, #f0c040);
+  color: var(--ink, #1a1a2e);
+}
+
+.dwindow__btn--close {
+  background: var(--pink, #e8547a);
+  color: #fff;
+}
+
+.dwindow__btn:hover {
+  opacity: 0.8;
+}
+
+.dwindow__body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(80vh - 40px);
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .dwindow {
+    min-width: 90vw;
+    max-width: 95vw;
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+}

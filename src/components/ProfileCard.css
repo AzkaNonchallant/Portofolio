@@ -400,3 +400,37 @@
     height: 38px;
   }
 }
+
+.card__launcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: var(--border-thin) solid var(--ink);
+  background: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.card__launcher-btn:hover {
+  background: var(--tan);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+.card__launcher-btn--pink {
+  background: var(--pink);
+  color: var(--cream-soft);
+  border-color: var(--pink-dark);
+}
+
+.card__launcher-btn--pink:hover {
+  background: var(--pink-dark);
+}

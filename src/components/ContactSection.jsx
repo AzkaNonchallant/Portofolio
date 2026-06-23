@@ -1,6 +1,11 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { Github, Linkedin, Instagram, Mail, MapPin, ArrowRight, Send, User, AtSign, MessageSquare, Tag } from 'lucide-react'
 import './ContactSection.css'
+
+const SERVICE_ID  = 'service_e4kluv8'   
+const TEMPLATE_ID = 'template_ijru59m'  
+const PUBLIC_KEY  = 'h7EXc-LDiZHKN_F2C'   
 
 const SOCIALS = [
   { icon: Github,    label: 'GitHub',    sub: 'github.com/azka-adirraff',      href: 'https://github.com/azka-adirraff' },
@@ -11,16 +16,39 @@ const SOCIALS = [
 ]
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [form, setForm]       = useState({ name: '', email: '', subject: '', message: '' })
+  const [sent, setSent]       = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError]     = useState(null)
 
   const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 3000)
-    setForm({ name: '', email: '', subject: '', message: '' })
+    setLoading(true)
+    setError(null)
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name:  form.name,
+          from_email: form.email,
+          subject:    form.subject,
+          message:    form.message,
+        },
+        PUBLIC_KEY
+      )
+      setSent(true)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setSent(false), 4000)
+    } catch (err) {
+      console.error('Gagal kirim:', err)
+      setError('Gagal kirim pesan, coba lagi.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -51,6 +79,7 @@ export default function ContactSection() {
                 placeholder="Enter your name"
                 value={form.name}
                 onChange={handleChange}
+                disabled={loading}
               />
             </div>
             <div className="contact__field">
@@ -65,6 +94,7 @@ export default function ContactSection() {
                 placeholder="Enter your email"
                 value={form.email}
                 onChange={handleChange}
+                disabled={loading}
               />
             </div>
           </div>
@@ -81,6 +111,7 @@ export default function ContactSection() {
               placeholder="What's this about?"
               value={form.subject}
               onChange={handleChange}
+              disabled={loading}
             />
           </div>
 
@@ -96,20 +127,23 @@ export default function ContactSection() {
               value={form.message}
               onChange={handleChange}
               rows={5}
+              disabled={loading}
             />
           </div>
 
           <div className="contact__form-footer">
             <button
               type="button"
-              className={`contact__btn ${sent ? 'contact__btn--sent' : ''}`}
+              className={`contact__btn ${sent ? 'contact__btn--sent' : ''} ${loading ? 'contact__btn--loading' : ''}`}
               onClick={handleSubmit}
+              disabled={loading || sent}
             >
               <Send size={15} strokeWidth={2.5} />
-              {sent ? 'Message sent!' : 'Send message'}
-              {!sent && <ArrowRight size={15} strokeWidth={2.5} />}
+              {loading ? 'Sending...' : sent ? 'Message sent! ✓' : 'Send message'}
+              {!loading && !sent && <ArrowRight size={15} strokeWidth={2.5} />}
             </button>
-            <p className="contact__note">🐢 Usually replies within 24 hours.</p>
+            {error && <p className="contact__error">{error}</p>}
+            {!error && <p className="contact__note">🐢 Usually replies within 24 hours.</p>}
           </div>
         </div>
       </div>

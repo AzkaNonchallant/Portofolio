@@ -60,7 +60,7 @@ export default function AboutSection() {
         <span className="about__eyebrow">Proyek terbaru</span>
         <ul className="about__project-list">
           {PROJECTS.map((project) => (
-            <li key={project.title} className="about__project halftone">
+            <li key={project.title} className="about__project">
               <span className="about__project-tag">{project.tag}</span>
               <span className="about__project-title">{project.title}</span>
             </li>
@@ -71,7 +71,7 @@ export default function AboutSection() {
         <br />
         
         <ul className="about__project-list">
-            <li className="about__all tone">
+            <li className="about__all">
               <span className="about__project-tag">Semua</span>
               <span className="about__project-title">Cek Semua ➡ </span>
             </li>

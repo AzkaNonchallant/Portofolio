@@ -1,9 +1,6 @@
-/* =========================================================
-   DESIGN TOKENS — "Retro Pop Fancard" system
-   Inspired by 2000s pop-magazine / comic UI fancards
-   ========================================================= */
+
 :root {
-  /* Color */
+  
   --blue: #0B3C5D;
   --red-deep: #072A40;
   --blue-deep: #145DA0;
@@ -15,12 +12,11 @@
   --tan: #6EC6FF;
   --ink: #0F172A;
 
-  /* Type */
   --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
   --font-body: 'Baloo 2', 'Segoe UI', sans-serif;
   --font-mono: 'Space Mono', 'Courier New', monospace;
 
-  /* Shape */
+
   --radius-card: 28px;
   --radius-pill: 999px;
   --border-thick: 3px;
@@ -60,7 +56,7 @@ a {
   color: inherit;
 }
 
-/* Halftone dot texture used on blue surfaces, comic-print style */
+
 .halftone {
   position: relative;
   background-color: var(--blue);
@@ -80,19 +76,18 @@ a {
   background-size: 11px 11px;
 }
 
-/* Hard comic outline used across cards / chips / buttons */
 .outline {
   border: var(--border-thick) solid var(--ink);
 }
 
-/* Visible focus ring for keyboard users */
+
 :focus-visible {
   outline: 3px solid var(--yellow);
   outline-offset: 2px;
 }
 
-/* Respect reduced motion preferences */
-/* @media (prefers-reduced-motion: reduce) {
+
+ @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
@@ -101,4 +96,4 @@ a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-} */
+} 
