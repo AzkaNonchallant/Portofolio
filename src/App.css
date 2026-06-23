@@ -3,12 +3,12 @@
   min-height: 100vh;
   padding: 40px 16px 56px;
   animation: fadeUp 0.4s ease both;
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 .page__content {
   position: relative;
-  z-index: 1;
+
 }
 
 /* PINDAH KE LUAR MEDIA QUERY */
@@ -23,16 +23,6 @@
   pointer-events: auto;
 }
 
-.window-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  pointer-events: none;
-}
-
-.window-layer .dwindow {
-  pointer-events: auto;
-}
 
 @media (max-width: 720px) {
   .hero-section {

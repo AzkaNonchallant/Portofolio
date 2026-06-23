@@ -1,10 +1,10 @@
-import { Heart, Star, MessageCircle } from 'lucide-react'
+import { Users, Folder } from 'lucide-react'
 import './StatsBar.css'
 
 const STATS = [
-  { icon: Heart,         value: '977', label: 'Apresiasi',      windowId: 'about'    },
-  { icon: Star,          value: '730', label: 'Proyek selesai', windowId: 'projects' },
-  { icon: MessageCircle, value: '444', label: 'Ulasan klien',   windowId: 'contact'  },
+  { icon: Users,         value: 'About', label: 'About',      windowId: 'about'    },
+  { icon: Folder,          value: 'Project', label: 'Proyek selesai', windowId: 'projects' },
+
 ]
 
 export default function StatsBar({ onOpen }) {
