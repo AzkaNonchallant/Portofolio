@@ -2,16 +2,16 @@
   position: relative;
   min-height: 100vh;
   padding: 40px 16px 56px;
-  animation: fadeUp 0.4s ease both;
   overflow: visible;
 }
 
 .page__content {
   position: relative;
+  animation: fadeUp 0.4s ease both;
 
 }
 
-/* PINDAH KE LUAR MEDIA QUERY */
+
 .window-layer {
   position: fixed;
   inset: 0;

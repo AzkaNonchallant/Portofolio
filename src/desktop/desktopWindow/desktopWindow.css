@@ -87,7 +87,59 @@
   .dwindow {
     min-width: 90vw;
     max-width: 95vw;
-    left: 50% !important;
-    transform: translateX(-50%);
   }
+
+  .dwindow__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 20, 0.55);
+  animation: dwindow-fade-in 0.15s ease-out;
+}
+
+@keyframes dwindow-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .dwindow {
+    position: fixed !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100%;
+
+    min-width: 0;
+    max-width: 100%;
+    max-height: 85vh;
+
+    border-radius: 16px 16px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+
+    box-shadow:
+      0 0 0 4px var(--pink, #e8547a),
+      0 0 0 7px var(--ink, #1a1a2e),
+      0 -10px 30px rgba(14, 38, 66, 0.45);
+  }
+
+  .dwindow--minimized {
+    max-height: 56px;
+  }
+
+  .dwindow__titlebar {
+    cursor: default;
+  }
+
+  .dwindow__body {
+    max-height: calc(85vh - 40px);
+  }
+
+  .dwindow__btn {
+    width: 26px;
+    height: 26px;
+  }
+}
 }

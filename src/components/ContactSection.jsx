@@ -8,10 +8,10 @@ const TEMPLATE_ID = 'template_ijru59m'
 const PUBLIC_KEY  = 'h7EXc-LDiZHKN_F2C'   
 
 const SOCIALS = [
-  { icon: Github,    label: 'GitHub',    sub: 'github.com/azka-adirraff',      href: 'https://github.com/azka-adirraff' },
-  { icon: Linkedin,  label: 'LinkedIn',  sub: 'linkedin.com/in/azka-adirraff', href: '#' },
-  { icon: Instagram, label: 'Instagram', sub: '@azka.aydirrafff',              href: '#' },
-  { icon: Mail,      label: 'Email',     sub: 'azkaaydirraff@email.com',       href: 'mailto:azkaaydirraff@email.com' },
+  { icon: Github,    label: 'GitHub',    sub: 'AzkaNonchallant',      href: 'https://github.com/AzkaNonchallant' },
+  { icon: Linkedin,  label: 'LinkedIn',  sub: 'azka aydirrafif', href: 'https://www.linkedin.com/in/azka-aydirrafif-590005373/' },
+  { icon: Instagram, label: 'Instagram', sub: 'azkarafif42',              href: 'https://www.instagram.com/azkarafif42/?__pwa=1' },
+  { icon: Mail,      label: 'Email',     sub: 'azkaaydirrafsyah@gmail.com',       href: 'mailto:azkaaydirrafsyah@gmail.com' },
   { icon: MapPin,    label: 'Location',  sub: 'Cibinong, Indonesia',           href: '#' },
 ]
 
@@ -59,10 +59,10 @@ export default function ContactSection() {
           <span className="contact__icon">🐚</span>
           <h2 className="contact__title">CONTACT ME</h2>
         </div>
-        <div className="contact__wave">〰〰〰</div>
+        <div className="contact__wave">__________________________</div>
         <p className="contact__desc">
-          Let's build something amazing together.<br />
-          Send me a message from the deep ocean!
+         Lets Colaborate<br />
+          
         </p>
 
         <div className="contact__form">
@@ -174,9 +174,9 @@ export default function ContactSection() {
       <div className="contact__footer">
         <span className="contact__icon-sm">🐚</span>
         <p className="contact__footer-text">
-          Open to collaborate on exciting projects and turn ideas into real impact.
+          Open to collaborate
         </p>
-        <span className="contact__wave-sm">〰〰〰</span>
+        <span className="contact__wave-sm">_____________</span>
       </div>
 
     </section>

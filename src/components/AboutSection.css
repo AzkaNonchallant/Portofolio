@@ -47,7 +47,7 @@
   color: var(--ink);
 }
 
-/* SKILLS */
+
 .about__skills {
   display: flex;
   flex-wrap: wrap;
@@ -64,6 +64,10 @@
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
+}
+
+.about__skill:hover {
+  transform: translateY(-4px);
 }
 
 /* RIGHT */
@@ -88,7 +92,7 @@
   border: 2px solid var(--ink);
   border-radius: 14px;
 
-  /* INI YANG BIKIN KELIATAN */
+
   background: var(--red-deep);
 
   color: var(--cream-soft);
@@ -132,7 +136,6 @@
   letter-spacing: 0.02em;
 }
 
-/* MOBILE */
 @media (max-width: 720px) {
   .about {
     grid-template-columns: 1fr;

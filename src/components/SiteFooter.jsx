@@ -2,16 +2,16 @@ import { Mail, Instagram, Github } from 'lucide-react'
 import './SiteFooter.css'
 
 const LINKS = [
-  { icon: Mail, label: 'Email', href: 'mailto:hello@example.com' },
-  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com' },
+  { icon: Mail, label: 'Email', href: 'mailto:azkaaydirrafifsyah@gmail.com/?__pwa=1' },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/AzkaNonchallant' },
 ]
 
 export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <p className="site-footer__text">
-        Yuk kolaborasi — kirim pesan dan ceritakan idemu.
+        Lets Collab
       </p>
 
       <ul className="site-footer__links">

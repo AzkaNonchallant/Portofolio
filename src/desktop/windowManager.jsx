@@ -1,4 +1,6 @@
-import { useState, useCallback, useRef } from 'react'
+// windowManager.jsx
+
+import { useState, useRef } from 'react'
 import DesktopWindow from './desktopWindow/desktopWindow.jsx'
 import AboutSection   from '../components/AboutSection.jsx'
 import ProjectSection from '../components/ProjectSection.jsx'
@@ -10,38 +12,9 @@ const WINDOW_DEFS = {
   contact:  { title: 'contact.exe',  Component: ContactSection, initialPos: { x: 180, y: 120 } },
 }
 
-export function useWindowManager() {
-  const [windows, setWindows] = useState([])
-
-  // Simpan topZ di ref agar callback tidak punya stale closure
-  const topZRef = useRef(200)
-
-  const nextZ = () => {
-    topZRef.current += 1
-    return topZRef.current
-  }
-
-  const openWindow = useCallback((id) => {
-    const z = nextZ()
-    setWindows(prev => {
-      const exists = prev.find(w => w.id === id)
-      if (exists) {
-        return prev.map(w => w.id === id ? { ...w, zIndex: z, minimized: false } : w)
-      }
-      return [...prev, { id, zIndex: z }]
-    })
-  }, [])
-
-  const closeWindow = useCallback((id) => {
-    setWindows(prev => prev.filter(w => w.id !== id))
-  }, [])
-
-  const focusWindow = useCallback((id) => {
-    const z = nextZ()
-    setWindows(prev => prev.map(w => w.id === id ? { ...w, zIndex: z } : w))
-  }, [])
-
-  const WindowLayer = useCallback(() => (
+// ✅ Komponen di LUAR hook — tidak pernah di-remount
+function WindowLayer({ windows, onClose, onFocus }) {
+  return (
     <>
       {windows.map(({ id, zIndex }) => {
         const def = WINDOW_DEFS[id]
@@ -54,15 +27,53 @@ export function useWindowManager() {
             title={title}
             initialPos={initialPos}
             zIndex={zIndex}
-            onClose={closeWindow}
-            onFocus={focusWindow}
+            onClose={onClose}
+            onFocus={onFocus}
           >
             <Component />
           </DesktopWindow>
         )
       })}
     </>
-  ), [windows, closeWindow, focusWindow])
+  )
+}
 
-  return { openWindow, WindowLayer }
+export function useWindowManager() {
+  const [windows, setWindows] = useState([])
+  const topZRef = useRef(200)
+
+  const nextZ = () => {
+    topZRef.current += 1
+    return topZRef.current
+  }
+
+  const openWindow = (id) => {
+    const z = nextZ()
+    setWindows(prev => {
+      if (prev.find(w => w.id === id)) {
+        return prev.map(w => w.id === id ? { ...w, zIndex: z } : w)
+      }
+      return [...prev, { id, zIndex: z }]
+    })
+  }
+
+  const closeWindow = (id) => {
+    setWindows(prev => prev.filter(w => w.id !== id))
+  }
+
+  const focusWindow = (id) => {
+    const z = nextZ()
+    setWindows(prev => prev.map(w => w.id === id ? { ...w, zIndex: z } : w))
+  }
+
+
+  const renderWindows = (
+    <WindowLayer
+      windows={windows}
+      onClose={closeWindow}
+      onFocus={focusWindow}
+    />
+  )
+
+  return { openWindow, renderWindows }
 }

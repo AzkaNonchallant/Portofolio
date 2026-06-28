@@ -87,7 +87,7 @@ a {
 }
 
 
- @media (prefers-reduced-motion: reduce) {
+ /* @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
@@ -96,4 +96,4 @@ a {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-} 
+}  */

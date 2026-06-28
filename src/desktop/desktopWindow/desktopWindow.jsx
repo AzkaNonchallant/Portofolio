@@ -1,102 +1,99 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { X, Minus } from 'lucide-react'
 import './DesktopWindow.css'
 
-export default function DesktopWindow({
-  id,
-  title,
-  children,
-  onClose,
-  initialPos,
-  zIndex,
-  onFocus,
-}) {
-  const [pos, setPos] = useState(initialPos ?? { x: 100, y: 80 })
-  const [minimized, setMinimized] = useState(false)
-
-  const drag = useRef(null)
-  const posRef = useRef(pos)
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia(`(max-width: ${breakpoint}px)`).matches
+  )
 
   useEffect(() => {
-    posRef.current = pos
-  }, [pos])
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`)
+    const handler = (e) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [breakpoint])
 
-  // ✅ stable handlers biar event listener aman
-  const onPointerMove = useCallback((e) => {
-    if (!drag.current) return
+  return isMobile
+}
 
-    const dx = e.clientX - drag.current.startX
-    const dy = e.clientY - drag.current.startY
-
-    setPos({
-      x: drag.current.startLeft + dx,
-      y: drag.current.startTop + dy,
-    })
-  }, [])
-
-  const onPointerUp = useCallback(() => {
-    drag.current = null
-
-    window.removeEventListener('pointermove', onPointerMove)
-    window.removeEventListener('pointerup', onPointerUp)
-  }, [onPointerMove])
+export default function DesktopWindow({ id, title, children, onClose, initialPos, zIndex, onFocus }) {
+  const [pos, setPos] = useState(initialPos ?? { x: 100, y: 80 })
+  const [minimized, setMinimized] = useState(false)
+  const drag = useRef(null)
+  const isMobile = useIsMobile()
 
   const onTitlebarPointerDown = (e) => {
+    if (isMobile) return // mobile = fixed bottom sheet, gak perlu drag
     if (e.target.closest('button')) return
-
     e.preventDefault()
-    e.stopPropagation()
-
     onFocus?.(id)
-
     drag.current = {
       startX: e.clientX,
       startY: e.clientY,
-      startLeft: posRef.current.x,
-      startTop: posRef.current.y,
+      startLeft: pos.x,
+      startTop: pos.y,
     }
 
-    window.addEventListener('pointermove', onPointerMove)
-    window.addEventListener('pointerup', onPointerUp)
+    const onMove = (ev) => {
+      if (!drag.current) return
+      setPos({
+        x: drag.current.startLeft + ev.clientX - drag.current.startX,
+        y: drag.current.startTop + ev.clientY - drag.current.startY,
+      })
+    }
+
+    const onUp = () => {
+      drag.current = null
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+    }
+
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', onUp)
   }
 
-  // optional debug (kalau perlu)
-  useEffect(() => {
-    // console.log('pos changed:', pos)
-  }, [pos])
-
   return (
-    <div
-      className={`dwindow ${minimized ? 'dwindow--minimized' : ''}`}
-      style={{ left: `${pos.x}px`, top: `${pos.y}px`, zIndex }}
-    >
-      <div className="dwindow__titlebar" onPointerDown={onTitlebarPointerDown}>
-        <span className="dwindow__title">{title}</span>
-
-        <div className="dwindow__controls">
-          <button
-            className="dwindow__btn dwindow__btn--min"
-            onClick={(e) => {
-              e.stopPropagation()
-              setMinimized((m) => !m)
-            }}
-          >
-            <Minus size={10} strokeWidth={3} />
-          </button>
-
-          <button
-            className="dwindow__btn dwindow__btn--close"
-            onClick={(e) => {
-              e.stopPropagation()
-              onClose(id)
-            }}
-          >
-            <X size={10} strokeWidth={3} />
-          </button>
+    <>
+      {isMobile && (
+        <div
+          className="dwindow__backdrop"
+          onClick={() => onClose(id)}
+          style={{ zIndex: zIndex - 1 }}
+        />
+      )}
+      <div
+        className={`dwindow ${minimized ? 'dwindow--minimized' : ''}`}
+        style={
+          isMobile
+            ? { zIndex, position: 'fixed' } // posisi diatur CSS, bukan inline
+            : { left: pos.x, top: pos.y, zIndex, position: 'fixed', transform: 'none' }
+        }
+        onPointerDown={(e) => {
+          if (e.target.closest('button')) return
+          onFocus?.(id)
+        }}
+      >
+        <div className="dwindow__titlebar" onPointerDown={onTitlebarPointerDown}>
+          <span className="dwindow__title">{title}</span>
+          <div className="dwindow__controls">
+            <button
+              className="dwindow__btn dwindow__btn--min"
+              onClick={(e) => { e.stopPropagation(); setMinimized(m => !m) }}
+            >
+              <Minus size={10} strokeWidth={3} />
+            </button>
+            <button
+              className="dwindow__btn dwindow__btn--close"
+              onClick={(e) => { e.stopPropagation(); onClose(id) }}
+            >
+              <X size={10} strokeWidth={3} />
+            </button>
+          </div>
         </div>
-      </div>
 
-      {!minimized && <div className="dwindow__body">{children}</div>}
-    </div>
+        {!minimized && <div className="dwindow__body">{children}</div>}
+      </div>
+    </>
   )
 }

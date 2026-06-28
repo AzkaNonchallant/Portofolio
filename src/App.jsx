@@ -7,23 +7,19 @@ import './App.css'
 import Contact from './pages/Contact.jsx'
 
 function Home() {
-  const { openWindow, WindowLayer } = useWindowManager()
+  const { openWindow, renderWindows } = useWindowManager()
 
   return (
+   
     <main className="page halftone">
       <BackgroundDecor />
-
+      {renderWindows}
       <div className="page__content">
-        <section className="hero-section">
-          <ProfileCard onOpen={openWindow} />
-        </section>
+        <ProfileCard onOpen={openWindow} />
         <SiteFooter />
       </div>
-
-      <div className="window-layer">
-        <WindowLayer />
-      </div>
     </main>
+  
   )
 }
 

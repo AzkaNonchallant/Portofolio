@@ -1,74 +1,16 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ArrowRight, Github } from 'lucide-react'
 import './ProjectSection.css'
 
 const PROJECTS = [
-  {
-    id: 1,
-    category: 'DESIGN',
-    categoryColor: 'cat--design',
-    title: 'RERA',
-    emoji: '🌟',
-    desc: 'UI Design Tool for Designer',
-    stack: ['Desktop', 'React', 'Tauri', 'TypeScript'],
-    github: '#',
-    img: null,
-  },
-  {
-    id: 2,
-    category: 'MOBILE',
-    categoryColor: 'cat--mobile',
-    title: 'Habit Tracker',
-    emoji: '🌿',
-    desc: 'Productivity Mobile App',
-    stack: ['Flutter', 'Firebase', 'Riverpod'],
-    github: '#',
-    img: null,
-  },
-  {
-    id: 3,
-    category: 'WEB',
-    categoryColor: 'cat--web',
-    title: 'Portfolio Website',
-    emoji: '🐚',
-    desc: 'Personal Portfolio Website',
-    stack: ['React', 'Tailwind CSS', 'Framer Motion'],
-    github: '#',
-    img: null,
-  },
-  {
-    id: 4,
-    category: 'MOBILE',
-    categoryColor: 'cat--mobile',
-    title: 'Ocean Wallet',
-    emoji: '🐚',
-    desc: 'Personal Finance App',
-    stack: ['Flutter', 'Supabase', 'Dart'],
-    github: '#',
-    img: null,
-  },
-  {
-    id: 5,
-    category: 'WEB',
-    categoryColor: 'cat--web',
-    title: 'Wave Store',
-    emoji: '⭐',
-    desc: 'E-Commerce Website',
-    stack: ['Next.js', 'Supabase', 'Stripe'],
-    github: '#',
-    img: null,
-  },
-  {
-    id: 6,
-    category: 'BACKEND',
-    categoryColor: 'cat--backend',
-    title: 'API Service',
-    emoji: '🪸',
-    desc: 'RESTful API for Mobile App',
-    stack: ['Node.js', 'Express', 'PostgreSQL'],
-    github: '#',
-    img: null,
-  },
+  { id: 1, category: 'DESIGN',  categoryColor: 'cat--design',  title: 'Superman Poster',              emoji: '🎇', desc: 'A poster design',    stack: ['Photoshop'],       github: '', img: '/img/Superman.jpeg' },
+  { id: 2, category: 'MOBILE',  categoryColor: 'cat--mobile',  title: 'Ai Habit Tracker',      emoji: '🌿', desc: 'Productivity Mobile App',         stack: ['Flutter', 'Golang'],               github: 'https://github.com/AzkaNonchallant/ai-habit-tracker.git', img: null },
+  { id: 3, category: 'WEB',     categoryColor: 'cat--web',     title: 'Face Recognition',  emoji: '😁', desc: 'Face Recognition',      stack: ['Python'],        github: 'https://github.com/AzkaNonchallant/Pengenal-MukaPY.git', img: null },
+  { id: 4, category: 'MOBILE',  categoryColor: 'cat--mobile',  title: 'Rera 3D',       emoji: '🖌', desc: 'Drawing Platform That Lets you turn your 2D drawing into 3D',            stack: ['Flutter', 'Supabase', 'Three-js'],                   github: '#', img: '/img/Untitled.jpg' },
+  { id: 5, category: 'WEB',     categoryColor: 'cat--web',     title: 'KPT',         emoji: '⭐', desc: 'A Website that is being used fopr tracking activity on the company',              stack: ['Code Igniter', 'JS'],                 github: 'https://github.com/AzkaNonchallant/kpt.git', img: null },
+  { id: 6, category: 'BACKEND', categoryColor: 'cat--backend', title: 'Pet Tracker',        emoji: '🪸', desc: 'RESTful API for Mobile App',      stack: ['Node.js', 'Express', 'Mysql'],              github: '#', img: '' },
+  { id: 7, category: 'WEB',     categoryColor: 'cat--web',     title: 'Inventory',  emoji: '🧺', desc: 'Website Tracking Activity With Chart',      stack: ['Laravel'],        github: 'https://github.com/AzkaNonchallant/Gudang.git', img: null },
+
 ]
 
 const FILTERS = ['ALL PROJECTS', 'WEB', 'MOBILE', 'DESIGN', 'BACKEND']
@@ -76,12 +18,40 @@ const FILTERS = ['ALL PROJECTS', 'WEB', 'MOBILE', 'DESIGN', 'BACKEND']
 export default function ProjectSection({ id }) {
   const [active, setActive] = useState('ALL PROJECTS')
 
+  const filterSoundRef = useRef(null) 
+  const hoverSoundRef  = useRef(null)  
+
+  const playFilter = () => {
+    const a = filterSoundRef.current
+    if (!a) return
+    a.currentTime = 0
+    a.volume = 0.45
+    a.play().catch(() => {})
+  }
+
+  const playHover = () => {
+    const a = hoverSoundRef.current
+    if (!a) return
+    a.currentTime = 0
+    a.volume = 0.35
+    a.play().catch(() => {})
+  }
+
+  const handleFilter = (f) => {
+    if (f !== active) playFilter()
+    setActive(f)
+  }
+
   const filtered = active === 'ALL PROJECTS'
     ? PROJECTS
     : PROJECTS.filter(p => p.category === active)
 
   return (
     <section id={id} className="projects">
+      {/* Audio elements */}
+      <audio ref={filterSoundRef} src="/sounds/SectionProject.mp3"  preload="auto" />
+      <audio ref={hoverSoundRef}  src="/sounds/pop.mp3"    preload="auto" />
+
       <div className="projects__header">
         <div className="projects__title-row">
           <span className="projects__icon">🐚</span>
@@ -97,13 +67,13 @@ export default function ProjectSection({ id }) {
           <button
             key={f}
             className={`projects__filter-btn ${active === f ? 'projects__filter-btn--active' : ''}`}
-            onClick={() => setActive(f)}
+            onClick={() => handleFilter(f)}
           >
             {f === 'ALL PROJECTS' && <span className="filter-icon">⊞</span>}
-            {f === 'WEB' && <span className="filter-icon">🌐</span>}
-            {f === 'MOBILE' && <span className="filter-icon">📱</span>}
-            {f === 'DESIGN' && <span className="filter-icon">✏️</span>}
-            {f === 'BACKEND' && <span className="filter-icon">&lt;/&gt;</span>}
+            {f === 'WEB'          && <span className="filter-icon">🌐</span>}
+            {f === 'MOBILE'       && <span className="filter-icon">📱</span>}
+            {f === 'DESIGN'       && <span className="filter-icon">✏️</span>}
+            {f === 'BACKEND'      && <span className="filter-icon">&lt;/&gt;</span>}
             {f}
           </button>
         ))}
@@ -111,11 +81,24 @@ export default function ProjectSection({ id }) {
 
       <div className="projects__grid">
         {filtered.map(project => (
-          <div key={project.id} className="project-card">
-            <div className="project-card__img">
-              <span className={`project-card__cat ${project.categoryColor}`}>{project.category}</span>
-              <div className="project-card__img-placeholder" />
-            </div>
+          <div
+            key={project.id}
+            className="project-card"
+            onMouseEnter={playHover}
+          >
+           <div className="project-card__img">
+  <span className={`project-card__cat ${project.categoryColor}`}>{project.category}</span>
+  {project.img ? (
+    <img
+      src={project.img}
+      alt={project.title}
+      className="project-card__img-photo"
+      loading="lazy"
+    />
+  ) : (
+    <div className="project-card__img-placeholder" />
+  )}
+</div>
             <div className="project-card__body">
               <div className="project-card__title-row">
                 <h3 className="project-card__title">

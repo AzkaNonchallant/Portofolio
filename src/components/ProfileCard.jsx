@@ -1,11 +1,92 @@
-import { MapPin, ChevronUp, ChevronDown, Play, ArrowLeft } from 'lucide-react'
-import NavBar from './NavBar.jsx'
-import StatsBar from './StatsBar.jsx'
-import './ProfileCard.css'
+import {
+  MapPin,
+  ChevronUp,
+  ChevronDown,
+  Play,
+  Pause,
+  ArrowLeft,
+} from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import NavBar from "./NavBar.jsx";
+import StatsBar from "./StatsBar.jsx";
+import "./ProfileCard.css";
 
 export default function ProfileCard({ onOpen }) {
+  const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.5;
+
+    const tryPlay = () => {
+      audio
+        .play()
+        .then(() => {
+          setPlaying(true);
+          document.removeEventListener("click", tryPlay);
+          document.removeEventListener("keydown", tryPlay);
+        })
+        .catch(() => {});
+    };
+
+    document.addEventListener("click", tryPlay);
+    document.addEventListener("keydown", tryPlay);
+
+    return () => {
+      audio.pause();
+      document.removeEventListener("click", tryPlay);
+      document.removeEventListener("keydown", tryPlay);
+    };
+  }, []);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+    } else {
+      audio.play();
+      setPlaying(true);
+    }
+  };
+
+  const skipPrev = () => {
+    if (audioRef.current) audioRef.current.currentTime = 0;
+  };
+
+  const skipNext = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+      setPlaying(true);
+    }
+  };
+
+  const tagSoundRef = useRef(null)
+
+const playTagPop = () => {
+  const a = tagSoundRef.current
+  if (!a) return
+  a.currentTime = 0
+  a.volume = 0.35
+  a.play().catch(() => {})
+}
+
   return (
     <section className="card outline" aria-label="Kartu profil">
+      <audio
+        ref={audioRef}
+        src="/music/moonlight-hush.mp3"
+        loop
+        preload="auto"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+      <audio ref={tagSoundRef} src="/sounds/pop.mp3" preload="auto" />
+
       <NavBar />
 
       <div className="card__body">
@@ -17,7 +98,7 @@ export default function ProfileCard({ onOpen }) {
 
           <div className="card__field">
             <span className="card__field-label">Experience</span>
-            <span className="card__field-value">8-9 Month</span>
+            <span className="card__field-value">8-9 Month Internship</span>
           </div>
 
           <div className="card__field card__field--name">
@@ -25,10 +106,7 @@ export default function ProfileCard({ onOpen }) {
             <span className="card__field-value">Azka Aydirrafif Syah</span>
           </div>
 
-          <button type="button" className="card__back">
-            <ArrowLeft size={14} strokeWidth={2.5} />
-            Kembali
-          </button>
+         
         </aside>
 
         <div className="card__photo">
@@ -56,39 +134,66 @@ export default function ProfileCard({ onOpen }) {
             <p className="card__years">2024 — Now</p>
           </div>
           <div className="card__media">
-            <div className="card__media-thumb" aria-hidden="true" />
+            <img
+              src="/img/Octopop.svg"
+              alt="Album cover"
+              className="card__media-thumb"
+            />
             <div className="card__media-arrows" />
           </div>
         </div>
 
-        {/* Music player — dikembalikan */}
         <div className="card__footer-block card__footer-block--center">
-          <button type="button" className="card__player-btn">
+          <button
+            type="button"
+            className="card__player-btn"
+            onClick={skipPrev}
+            title="Restart"
+          >
             <ChevronUp size={16} strokeWidth={2.5} />
           </button>
 
-          <div className="card__visualizer halftone--deep" aria-hidden="true">
+          <div
+            className="card__visualizer halftone--deep"
+            aria-hidden="true"
+            data-playing={playing}
+          >
             {Array.from({ length: 24 }).map((_, i) => (
               <span key={i} className="card__visualizer-bar" />
             ))}
           </div>
 
-          <button type="button" className="card__player-btn card__player-btn--play">
-            <Play size={16} strokeWidth={2.5} fill="currentColor" />
+          <button
+            type="button"
+            className="card__player-btn card__player-btn--play"
+            onClick={togglePlay}
+            title={playing ? "Pause" : "Play"}
+          >
+            {playing ? (
+              <Pause size={16} strokeWidth={2.5} fill="currentColor" />
+            ) : (
+              <Play size={16} strokeWidth={2.5} fill="currentColor" />
+            )}
           </button>
 
-          <button type="button" className="card__player-btn">
+          <button
+            type="button"
+            className="card__player-btn"
+            onClick={skipNext}
+            title="Restart & Play"
+          >
             <ChevronDown size={16} strokeWidth={2.5} />
           </button>
         </div>
 
         <div className="card__footer-block card__footer-block--end">
-          <div className="card__tags">
-            <span className="card__tag">Data Analyst</span>
-            <span className="card__tag">Frontend Dev</span>
-            <span className="card__tag">Mobile Dev</span>
-            <span className="card__tag">Illustrator</span>
-          </div>
+         <div className="card__tags">
+  {['Data Analyst', 'Frontend Dev', 'Mobile Dev', 'Illustrator'].map(tag => (
+    <span key={tag} className="card__tag" onMouseEnter={playTagPop}>
+      {tag}
+    </span>
+  ))}
+</div>
           <p className="card__location">
             <MapPin size={14} strokeWidth={2.5} />
             Cibinong, Indonesia
@@ -96,5 +201,5 @@ export default function ProfileCard({ onOpen }) {
         </div>
       </div>
     </section>
-  )
+  );
 }
