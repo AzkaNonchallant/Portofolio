@@ -11,7 +11,7 @@ import NavBar from "./NavBar.jsx";
 import StatsBar from "./StatsBar.jsx";
 import "./ProfileCard.css";
 
-const TAGS = ['Data Analyst', 'Frontend Dev', 'Mobile Dev', 'Illustrator']
+const TAGS = ['Data Analyst', 'Mobile Dev', 'Illustrator']
 
 export default function ProfileCard({ onOpen }) {
   const audioRef    = useRef(null)
