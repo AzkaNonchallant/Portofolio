@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react'
 import { createPortal } from 'react-dom'
-import { useTheme } from '../context/ThemeContext.jsx'
+import { useTheme } from '../context/themeContext.jsx'
 import './BackgroundDecor.css'
 
-// ---------- SVG Shapes ----------
 function Star({ className }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false">
@@ -26,7 +25,6 @@ function Triangle({ className }) {
   )
 }
 
-// ---------- Ocean Shapes ----------
 function Seaweed({ className }) {
   return (
     <svg viewBox="0 0 40 120" className={className} aria-hidden="true" focusable="false">
@@ -92,7 +90,6 @@ function OceanDecorations() {
   )
 }
 
-// ---------- Constants ----------
 const SQUID_LINES = [
   "Halo! 👋",
   "Lagi cari project apa nih?",
@@ -102,7 +99,6 @@ const SQUID_LINES = [
 const INK_DURATION   = 1800
 const LIGHT_DURATION = 1800
 
-// ---------- Custom hook: timer cleanup ----------
 function useTimers() {
   const refs = useRef({})
 
@@ -124,7 +120,6 @@ function useTimers() {
   return { set, clear, clearAll }
 }
 
-// ---------- SquidMascot ----------
 function SquidMascot() {
   const { theme, toggleTheme } = useTheme()
   const [frame, setFrame]           = useState(0)
