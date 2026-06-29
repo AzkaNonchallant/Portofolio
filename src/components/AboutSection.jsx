@@ -2,8 +2,7 @@ import { useRef, useCallback } from 'react'
 import './AboutSection.css'
 
 const SKILLS = [
-  'Dart', 'JavaScript', 'PHP', 'Kotlin', 'Python',
-  'SQL', 'PostgreSQL', 'Supabase', '.NET', 'Postman',
+  'Dart', 'JavaScript', 'PHP', 'Kotlin', 'Python', '.NET', 'Postman',
   'Photoshop', 'After Effects', 'Figma', 'Supabase', 'Git',
   'Laravel', 'Flutter', 'Express', 'React', 'Code Igniter', 'TypeScript'
 ]

@@ -134,8 +134,8 @@ export default function ProfileCard({ onOpen }) {
           </div>
 
           <h1 className="card__name">
-            <span>Azka</span>
-            <span>Aydirrafif</span>
+            <span>Azka </span>
+            
           </h1>
 
           <div className="card__stats">
