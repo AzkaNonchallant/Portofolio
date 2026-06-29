@@ -11,7 +11,7 @@ export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <p className="site-footer__text">
-        Lets Collab
+        Open In Desktop In Order to See More Gimmicks
       </p>
 
       <ul className="site-footer__links">

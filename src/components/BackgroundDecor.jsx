@@ -376,8 +376,9 @@ export default function BackgroundDecor() {
         <Diamond  className="decor__shape decor__shape--pink   decor__shape--e" />
         <Star     className="decor__shape decor__shape--yellow decor__shape--f" />
         <OceanDecorations />
-        <SquidMascot />
+        
       </div>
+      <SquidMascot />
       <AnglerfishMascot />
     </>
   )
