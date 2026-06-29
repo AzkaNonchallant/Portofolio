@@ -1,4 +1,4 @@
-# Hanzlyn Trisha — Fancard Portfolio
+
 
 Implementasi React (Vite) dari desain "fancard" retro yang kamu kirim:
 background biru halftone, kartu krem dengan outline pink tebal,
