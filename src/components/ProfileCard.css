@@ -41,7 +41,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--text-muted); /* sebelumnya: var(--blue) */
   opacity: 0.8;
 }
 
@@ -86,7 +86,7 @@
   background: var(--yellow);
 }
 
-/* ---------- Photo + signature typography ---------- */
+
 .card__photo {
   position: relative;
   padding: 18px 18px 64px;
@@ -95,38 +95,44 @@
   justify-content: center;
 }
 
+.card__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 5%; 
+}
+
 .card__photo-frame {
   width: 100%;
   aspect-ratio: 16 / 11;
   border: var(--border-thick) solid var(--cream);
   border-radius: 18px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ 
 }
 
 .card__photo-placeholder {
   width: 100%;
+  height: 100%;       
+}
+
+.card__photo-placeholder img {
+  width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(160deg, var(--tan) 0%, var(--blue-deep) 75%);
-  /* TIP: ganti baris di atas dengan
-     background-image: url('/src/assets/foto-profil.jpg');
-     background-size: cover;
-     background-position: center;
-  */
+  object-fit: cover;
+  object-position: center top;  
+  display: block;               /* hapus gap bawah img */
 }
 
 .card__photo-hint {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--cream-soft);
+  color: var(--text-on-overlay); 
   background: rgba(0, 0, 0, 0.35);
   padding: 6px 12px;
   border-radius: var(--radius-pill);
 }
+
 
 .card__name {
   position: absolute;
@@ -175,7 +181,6 @@
   background: var(--pink-dark);
 }
 
-/* ---------- Footer ---------- */
 .card__footer {
   display: grid;
   grid-template-columns: 1fr 1.2fr 1fr;
@@ -325,7 +330,7 @@
   gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--blue);
+  color: var(--text-muted);
   font-weight: 700;
 }
 
@@ -380,7 +385,6 @@
     gap: 16px;
   }
 
-  /* ---- ROW: Years active + avatar, dirapihin ---- */
   .card__footer-block {
     width: 100%;
     justify-content: space-between;

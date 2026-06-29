@@ -3,16 +3,15 @@ import { X, Minus } from 'lucide-react'
 import './DesktopWindow.css'
 
 function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(
-    () => window.matchMedia(`(max-width: ${breakpoint}px)`).matches
-  )
+ const [isMobile, setIsMobile] = useState(false)
 
-  useEffect(() => {
-    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`)
-    const handler = (e) => setIsMobile(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [breakpoint])
+useEffect(() => {
+  const mq = window.matchMedia(`(max-width: ${breakpoint}px)`)
+  setIsMobile(mq.matches)          // set initial value setelah mount
+  const handler = (e) => setIsMobile(e.matches)
+  mq.addEventListener('change', handler)
+  return () => mq.removeEventListener('change', handler)
+}, [breakpoint])
 
   return isMobile
 }

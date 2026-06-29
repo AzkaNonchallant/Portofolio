@@ -1,5 +1,5 @@
 .projects {
-  background: #f5f0e8;
+  background: var(color(--cream-soft));
   border-radius: 24px;
   padding: 36px 32px 28px;
   border: 3px solid #eeeeee;
@@ -31,7 +31,7 @@
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
   letter-spacing: 0.06em;
-  color: #0d2137;
+  color: var(--red);
   line-height: 1;
   margin: 0;
 }
@@ -54,7 +54,6 @@
   margin: 0;
 }
 
-/* ---------- Filters ---------- */
 .projects__filters {
   display: flex;
   flex-wrap: wrap;
@@ -80,13 +79,13 @@
 }
 
 .projects__filter-btn:hover {
-  border-color: #2d8c9e;
-  color: #2d8c9e;
+  border-color: var(--blue-deep);
+  color: var(--blue-deep);
 }
 
 .projects__filter-btn--active {
-  background: #0d2137;
-  border-color: #0d2137;
+  background: var(--blue-deep);
+  border-color: var(--blue-deep);
   color: #f5f0e8;
 }
 
@@ -94,16 +93,14 @@
   font-size: 0.9rem;
 }
 
-/* ---------- Grid ---------- */
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
-/* ---------- Project Card ---------- */
 .project-card {
-  background: #ffffff;
+  background: var(color(--cream-soft));
   border-radius: 16px;
   overflow: hidden;
   border: 1.5px solid #e0d8cc;
@@ -162,7 +159,7 @@
   font-family: var(--font-body, system-ui, sans-serif);
   font-size: 1rem;
   font-weight: 700;
-  color: #0d2137;
+  color: var(--text-muted);
   margin: 0;
   display: flex;
   align-items: center;
@@ -180,7 +177,7 @@
   border: 1.5px solid #c8c0b4;
   display: grid;
   place-items: center;
-  color: #0d2137;
+  color: var(--blue-deep);
   text-decoration: none;
   flex-shrink: 0;
   transition: background 0.15s, border-color 0.15s;
@@ -194,7 +191,7 @@
 
 .project-card__desc {
   font-size: 0.82rem;
-  color: #5a6a7a;
+  color: var(--blue-deep);
   margin: 0 0 12px;
   line-height: 1.4;
 }
@@ -218,21 +215,20 @@
   padding: 3px 8px;
   border-radius: 999px;
   border: 1.5px solid #c8c0b4;
-  color: #3a4a5a;
+  color: #5b83ab;
   background: transparent;
 }
 
 .project-card__github {
-  color: #3a4a5a;
+  color: #5982ab;
   flex-shrink: 0;
   transition: color 0.15s;
 }
 
 .project-card__github:hover {
-  color: #0d2137;
+  color: #5c92cd;
 }
 
-/* ---------- Footer ---------- */
 .projects__footer {
   display: flex;
   align-items: center;
@@ -255,7 +251,6 @@
   margin: 0;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .projects__grid {
     grid-template-columns: repeat(2, 1fr);

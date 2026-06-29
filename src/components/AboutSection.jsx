@@ -1,46 +1,54 @@
-import { useRef } from 'react'
+import { useRef, useCallback } from 'react'
 import './AboutSection.css'
 
 const SKILLS = [
   'Dart', 'JavaScript', 'PHP', 'Kotlin', 'Python',
-  'Sql', 'Git', 'Composer', '.Net', 'Postman',
-  'Photoshop', 'After Effect', 'Figma', 'FireBase', 'npm'
+  'SQL', 'Git', 'Composer', '.NET', 'Postman',
+  'Photoshop', 'After Effects', 'Figma', 'Firebase', 'npm',
 ]
 
 const PROJECTS = [
-  { title: 'KPT', tag: 'PKL' },
-  { title: 'Habit Tracker', tag: 'Tracker' },
-  { title: 'Rera', tag: 'Editorial' },
+  { title: 'KPT',           tag: 'PKL'       },
+  { title: 'Habit Tracker', tag: 'Tracker'   },
+  { title: 'Rera',          tag: 'Editorial' },
 ]
 
 export default function AboutSection() {
-  const popRef = useRef(null)
+  const popRef     = useRef(null)
+  const audioReady = useRef(false)
 
-  const playPop = () => {
+  const playPop = useCallback(() => {
     const audio = popRef.current
     if (!audio) return
+
+    if (!audioReady.current) {
+      audio.load()
+      audioReady.current = true
+    }
+
     audio.currentTime = 0
     audio.volume = 0.4
     audio.play().catch(() => {})
-  }
+  }, [])
 
   return (
     <section className="about outline" aria-labelledby="about-title">
-      <audio ref={popRef} src="/sounds/pop.mp3" preload="auto" />
+      <audio ref={popRef} src="/sounds/pop.mp3" preload="none" />
 
       <div className="about__intro">
-        <span className="about__eyebrow">About Me</span>
+        <span className="about__eyebrow" aria-hidden="true">About Me</span>
+
         <h2 id="about-title" className="about__title">
-          Hey, My name is Azka Aydirrafif Syah
+          Hey, nama gw Azka Aydirrafif Syah
         </h2>
+
         <p className="about__text">
-          Im a Student from Vocational High School SMK PLUS PELITA NUSANTARA 
-          I currently reside in Cibinong , Focusing on Learning more about Website,
-          Mobile and Data im also a Designer and Illustrator , My Favorite design Combination is
-          Pop Color, Bold Typography, Retro And a little bit of Comic 
+          Gw siswa SMK Plus Pelita Nusantara, tinggal di Cibinong. Fokus belajar
+          Website, Mobile, dan Data — sekaligus desainer dan ilustrator. Kombinasi
+          favorit gw: pop color, bold typography, retro, dan sedikit sentuhan komik.
         </p>
 
-        <ul className="about__skills">
+        <ul className="about__skills" role="list" aria-label="Skill yang dikuasai">
           {SKILLS.map((skill) => (
             <li
               key={skill}
@@ -54,8 +62,9 @@ export default function AboutSection() {
       </div>
 
       <div className="about__projects">
-        <span className="about__eyebrow">Proyek terbaru</span>
-        <ul className="about__project-list">
+        <span className="about__eyebrow" aria-hidden="true">Proyek terbaru</span>
+
+        <ul className="about__project-list" role="list" aria-label="Proyek terbaru">
           {PROJECTS.map((project) => (
             <li
               key={project.title}
@@ -68,12 +77,13 @@ export default function AboutSection() {
           ))}
         </ul>
 
-        <br />
-
-        <ul className="about__project-list">
+        <ul className="about__project-list about__project-list--cta" role="list">
           <li className="about__all" onMouseEnter={playPop}>
             <span className="about__project-tag">Semua</span>
-            <span className="about__project-title">Cek Semua ➡</span>
+           
+            <span className="about__project-title" aria-label="Cek semua proyek">
+              Cek Semua →
+            </span>
           </li>
         </ul>
       </div>

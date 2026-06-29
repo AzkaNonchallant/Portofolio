@@ -1,8 +1,27 @@
-/* ==========================================================================
-   BackgroundDecor.css
-   ========================================================================== */
 
-/* Container Utama Background */
+
+.decor__ink-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: var(--overlay-color, #000);
+  clip-path: circle(0% at var(--ink-x, 90%) var(--ink-y, 90%));
+  opacity: 0;
+}
+
+.decor__ink-overlay.is-active {
+  animation: ink-splash 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes ink-splash {
+  0%   { clip-path: circle(0% at var(--ink-x) var(--ink-y));   opacity: 0; }
+  6%   { opacity: 1; }                                          
+  45%  { clip-path: circle(150% at var(--ink-x) var(--ink-y)); opacity: 1; }
+  72%  { clip-path: circle(150% at var(--ink-x) var(--ink-y)); opacity: 1; } 
+  100% { clip-path: circle(0% at var(--ink-x) var(--ink-y));   opacity: 0; }
+}
+
 .decor {
   position: absolute;
   inset: 0;
@@ -11,122 +30,288 @@
   z-index: 0;
 }
 
-/* Base Class untuk Semua Komponen Bentuk */
 .decor__shape {
   position: absolute;
   transform-origin: center;
   will-change: transform;
 }
 
-/* Pewarnaan Karakter Tema (Menggunakan CSS Variables) */
-.decor__shape--pink {
-  color: var(--pink, #ff60b5);
-}
-.decor__shape--cream {
-  color: var(--cream, #f7e1c6);
-}
-.decor__shape--yellow {
-  color: var(--yellow, #fbc63a);
-}
+.decor__shape--pink   { color: var(--pink, #ff60b5); }
+.decor__shape--cream  { color: var(--cream, #f7e1c6); }
+.decor__shape--yellow { color: var(--yellow, #fbc63a); }
 
-/* ==========================================================================
-   Animasi GERAK untuk Semua Shape
-   ========================================================================== */
 
-/* Objek A: Bintang Pink Besar di Kiri Atas */
-.decor__shape--a {
-  top: 4%;
-  left: 6%;
-  width: 46px;
-  height: 46px;
-  animation: gerakA 6s ease-in-out infinite;
-}
 
+.decor__shape--a { top: 4%; left: 6%; width: 46px; height: 46px; animation: gerakA 6s ease-in-out infinite; }
 @keyframes gerakA {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(180deg); }
+  50%      { transform: translateY(-30px) rotate(180deg); }
 }
 
-/* Objek B: Bintang Cream Besar di Kanan Atas */
-.decor__shape--b {
-  top: 8%;
-  right: 10%;
-  width: 56px;
-  height: 56px;
-  animation: gerakB 7s ease-in-out infinite;
-  animation-delay: 0.5s;
-}
-
+.decor__shape--b { top: 8%; right: 10%; width: 56px; height: 56px; animation: gerakB 7s ease-in-out infinite; animation-delay: 0.5s; }
 @keyframes gerakB {
   0%, 100% { transform: translateX(0px) rotate(0deg); }
-  50% { transform: translateX(25px) rotate(-180deg); }
+  50%      { transform: translateX(25px) rotate(-180deg); }
 }
 
-/* Objek C: Kotak/Diamond Kuning Kecil di Kanan Tengah */
-.decor__shape--c {
-  top: 38%;
-  right: 4%;
-  width: 26px;
-  height: 26px;
-  animation: gerakC 5s ease-in-out infinite;
-  animation-delay: 1s;
-}
-
+.decor__shape--c { top: 38%; right: 4%; width: 26px; height: 26px; animation: gerakC 5s ease-in-out infinite; animation-delay: 1s; }
 @keyframes gerakC {
   0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(-15px, -20px) scale(1.3); }
+  50%      { transform: translate(-15px, -20px) scale(1.3); }
 }
 
-/* Objek D: Segitiga Cream Sedang di Kiri Bawah */
-.decor__shape--d {
-  bottom: 18%;
-  left: 3%;
-  width: 30px;
-  height: 30px;
-  animation: gerakD 8s ease-in-out infinite;
-  animation-delay: 0.3s;
-}
-
+.decor__shape--d { bottom: 18%; left: 3%; width: 30px; height: 30px; animation: gerakD 8s ease-in-out infinite; animation-delay: 0.3s; }
 @keyframes gerakD {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-25px) rotate(90deg); }
+  50%      { transform: translateY(-25px) rotate(90deg); }
 }
 
-/* Objek E: Kotak/Diamond Pink Kecil di Kanan Bawah */
-.decor__shape--e {
-  bottom: 6%;
-  right: 16%;
-  width: 24px;
-  height: 24px;
-  animation: gerakE 4s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
+.decor__shape--e { bottom: 6%; right: 16%; width: 24px; height: 24px; animation: gerakE 4s ease-in-out infinite; animation-delay: 1.5s; }
 @keyframes gerakE {
   0%, 100% { transform: translateX(0px) scale(1); opacity: 0.6; }
-  50% { transform: translateX(-20px) scale(1.4); opacity: 1; }
+  50%      { transform: translateX(-20px) scale(1.4); opacity: 1; }
 }
 
-/* Objek F: Bintang Kuning Sedang di Tengah Bawah */
-.decor__shape--f {
-  bottom: 4%;
-  left: 42%;
-  width: 38px;
-  height: 38px;
-  animation: gerakF 9s ease-in-out infinite;
-  animation-delay: 0.8s;
-}
-
+.decor__shape--f { bottom: 4%; left: 42%; width: 38px; height: 38px; animation: gerakF 9s ease-in-out infinite; animation-delay: 0.8s; }
 @keyframes gerakF {
   0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-  50% { transform: translate(-10px, -15px) rotate(120deg); }
+  50%      { transform: translate(-10px, -15px) rotate(120deg); }
 }
 
-/* ==========================================================================
-   Tambahan Efek Hover (Opsional - biar lebih hidup)
-   ========================================================================== */
 .decor__shape:hover {
   animation-play-state: paused;
   transform: scale(1.2);
   transition: transform 0.3s ease;
 }
+
+
+.decor__squid-wrap {
+  position: absolute;
+  bottom: 2%;
+  right: 5%;
+  z-index: 9; 
+  pointer-events: auto; 
+}
+
+.decor__squid {
+  display: block;
+  width: clamp(190px, 9vw, 170px);
+  cursor: pointer;
+  user-select: none;
+
+   filter: hue-rotate(160deg) saturate(0.8) brightness(0.9)
+          drop-shadow(0 0 8px rgba(77, 182, 172, 0.5));
+
+  animation: squid-float 4s ease-in-out infinite;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.decor__squid:hover {
+  transform: translateY(-12px) rotate(-3deg);
+  filter:
+    var(--squid-recolor)
+    drop-shadow(0 0 8px rgba(77, 182, 172, 0.9))
+    drop-shadow(0 0 20px rgba(77, 182, 172, 0.6))
+    drop-shadow(0 0 40px rgba(77, 182, 172, 0.3));
+}
+
+.decor__squid--surprised {
+  filter: var(--squid-recolor) drop-shadow(0 0 14px rgba(255, 96, 181, 0.6));
+}
+
+@keyframes squid-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(2deg); }
+}
+
+
+.decor__squid-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px) scale(0.9);
+  margin-bottom: 10px;
+  background: var(--cream, #f7e1c6);
+  color: #1a2b3c;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.decor__squid-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--cream, #f7e1c6);
+}
+
+.decor__squid-bubble.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+
+.decor__angler-wrap {
+  position: absolute;
+  bottom: 60px;
+  left: 24px;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  animation: angler-float 4s ease-in-out infinite;
+}
+
+
+.decor__angler-wrap.is-active {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.decor__angler {
+  display: block;
+  width: clamp(220px, 8vw, 140px);
+  cursor: pointer;
+  user-select: none;
+   filter: hue-rotate(160deg) saturate(0.8) brightness(0.9)
+          drop-shadow(0 0 8px rgba(77, 182, 172, 0.5));
+  transition: filter 0.3s ease;
+}
+
+.decor__angler:hover {
+  filter:
+    drop-shadow(0 0 8px rgba(255, 200, 0, 0.9))
+    drop-shadow(0 0 20px rgba(255, 200, 0, 0.6))
+    drop-shadow(0 0 40px rgba(255, 200, 0, 0.3));
+}
+
+.decor__angler--nyala {
+  filter:
+    drop-shadow(0 0 14px rgba(255, 200, 0, 0.9))
+    drop-shadow(0 0 40px rgba(255, 200, 0, 0.6));
+}
+
+@keyframes angler-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+
+.decor__seaweed {
+  color: var(--pink, #4DB6AC);
+  opacity: 0.5;
+}
+
+.decor__seaweed--a {
+  bottom: 0; left: 2%;
+  width: 32px; height: 90px;
+  animation: sway 4s ease-in-out infinite;
+}
+.decor__seaweed--b {
+  bottom: 0; left: 8%;
+  width: 24px; height: 70px;
+  animation: sway 5s ease-in-out infinite;
+  animation-delay: 0.8s;
+  opacity: 0.35;
+}
+.decor__seaweed--c {
+  bottom: 0; right: 3%;
+  width: 28px; height: 80px;
+  animation: sway 4.5s ease-in-out infinite;
+  animation-delay: 1.2s;
+  opacity: 0.4;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-6deg) translateX(0px); transform-origin: bottom center; }
+  50%       { transform: rotate(6deg) translateX(3px); transform-origin: bottom center; }
+}
+
+.decor__bubble {
+  color: var(--cream, #EAF6FF);
+  opacity: 0;
+}
+
+.decor__bubble--a { width: 18px; height: 18px; left: 12%;  bottom: 10%; animation: floatUp 6s ease-in infinite 0s; }
+.decor__bubble--b { width: 12px; height: 12px; left: 25%;  bottom: 5%;  animation: floatUp 8s ease-in infinite 1.5s; }
+.decor__bubble--c { width: 22px; height: 22px; left: 60%;  bottom: 8%;  animation: floatUp 7s ease-in infinite 0.8s; }
+.decor__bubble--d { width: 10px; height: 10px; right: 15%; bottom: 12%; animation: floatUp 9s ease-in infinite 2s; }
+.decor__bubble--e { width: 16px; height: 16px; right: 28%; bottom: 6%;  animation: floatUp 6.5s ease-in infinite 3s; }
+
+@keyframes floatUp {
+  0%   { opacity: 0;   transform: translateY(0px) scale(1); }
+  10%  { opacity: 0.5; }
+  80%  { opacity: 0.3; transform: translateY(-120px) scale(1.1) translateX(10px); }
+  100% { opacity: 0;   transform: translateY(-160px) scale(0.8) translateX(-5px); }
+}
+
+.decor__starfish {
+  color: var(--yellow, #7DD3FC);
+  opacity: 0.55;
+}
+
+.decor__starfish--a {
+  width: 38px; height: 38px;
+  bottom: 3%; left: 18%;
+  animation: slowSpin 12s linear infinite;
+}
+.decor__starfish--b {
+  width: 28px; height: 28px;
+  top: 15%; right: 2%;
+  animation: slowSpin 16s linear infinite reverse;
+  opacity: 0.4;
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.decor__shell {
+  color: var(--tan, #6EC6FF);
+  opacity: 0.5;
+}
+
+.decor__shell--a {
+  width: 32px; height: 32px;
+  bottom: 2%; right: 22%;
+  animation: shellBob 5s ease-in-out infinite;
+}
+.decor__shell--b {
+  width: 24px; height: 24px;
+  bottom: 4%; left: 38%;
+  animation: shellBob 6s ease-in-out infinite;
+  animation-delay: 1s;
+  opacity: 0.35;
+}
+
+@keyframes shellBob {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50%       { transform: rotate(5deg) translateY(-6px); }
+}
+
+@media (max-width: 768px) {
+  .decor__squid-wrap,
+  .decor__angler-wrap,
+  .decor__seaweed,
+  .decor__bubble,
+  .decor__starfish,
+  .decor__shell {
+    display: none !important;
+  }
+}
+
+
+

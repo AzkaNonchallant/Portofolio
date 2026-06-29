@@ -2,8 +2,8 @@ import { Mail, Instagram, Github } from 'lucide-react'
 import './SiteFooter.css'
 
 const LINKS = [
-  { icon: Mail, label: 'Email', href: 'mailto:azkaaydirrafifsyah@gmail.com/?__pwa=1' },
-  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/' },
+  { icon: Mail, label: 'Email', href: 'mailto:azkaaydirrafifsyah@gmail.com/' },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/azkarafif42/' },
   { icon: Github, label: 'GitHub', href: 'https://github.com/AzkaNonchallant' },
 ]
 

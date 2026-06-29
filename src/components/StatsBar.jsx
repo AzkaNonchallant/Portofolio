@@ -4,7 +4,7 @@ import './StatsBar.css'
 const STATS = [
   { icon: Users,         value: 'About', label: 'About',      windowId: 'about'    },
   { icon: Folder,          value: 'Project', label: 'Proyek selesai', windowId: 'projects' },
-  { icon: Folder,          value: 'Contact', label: 'Proyek selesai', windowId: 'contact' },
+  { icon: Folder,          value: 'Contact', label: 'Contact', windowId: 'contact' },
 
 ]
 

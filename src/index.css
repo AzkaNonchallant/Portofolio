@@ -3,7 +3,7 @@
   
   --blue: #0B3C5D;
   --red-deep: #072A40;
-  --blue-deep: #145DA0;
+  --blue-deep: #4691d6;
   --cream: #EAF6FF;
   --cream-soft: #F5FBFF;
   --pink: #4DB6AC;
@@ -11,6 +11,7 @@
   --yellow: #7DD3FC;
   --tan: #6EC6FF;
   --ink: #0F172A;
+  --squid-recolor: hue-rotate(160deg) saturate(1.25) brightness(1.05);
 
   --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
   --font-body: 'Baloo 2', 'Segoe UI', sans-serif;
@@ -21,6 +22,20 @@
   --radius-pill: 999px;
   --border-thick: 3px;
   --border-thin: 2px;
+}
+
+[data-theme="dark"] {
+  --blue: #202027;        
+  --red-deep: #050506;   
+  --blue-deep: #ed4444;   
+  --cream: #15151C;       
+  --cream-soft: #1C1C26;  
+  --pink: #f33333;        
+  --pink-dark: #c71f1f;  
+  --yellow: #e8ba4e;     
+  --tan: #FF8C42;        
+  --ink: #F4F1EA;   
+  --squid-recolor: ;      
 }
 
 * {
