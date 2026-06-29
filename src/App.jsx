@@ -1,7 +1,7 @@
 
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ThemeProvider } from './context/ThemeContext.jsx'
+import { ThemeProvider } from './context/themeContext.jsx'
 import './App.css'
 
 
