@@ -3,14 +3,15 @@ import './AboutSection.css'
 
 const SKILLS = [
   'Dart', 'JavaScript', 'PHP', 'Kotlin', 'Python',
-  'SQL', 'Git', 'Composer', '.NET', 'Postman',
-  'Photoshop', 'After Effects', 'Figma', 'Firebase', 'npm',
+  'SQL', 'PostgreSQL', 'Supabase', '.NET', 'Postman',
+  'Photoshop', 'After Effects', 'Figma', 'Supabase', 'Git',
+  'Laravel', 'Flutter', 'Express', 'React', 'Code Igniter', 'TypeScript'
 ]
 
 const PROJECTS = [
-  { title: 'KPT',           tag: 'PKL'       },
-  { title: 'Habit Tracker', tag: 'Tracker'   },
-  { title: 'Rera',          tag: 'Editorial' },
+  { title: 'KPT',           tag: 'Website'       },
+  { title: 'Habit Tracker', tag: 'Mobile'   },
+  { title: 'Rera',          tag: 'Desktop And Mobile' },
 ]
 
 export default function AboutSection() {
@@ -39,13 +40,11 @@ export default function AboutSection() {
         <span className="about__eyebrow" aria-hidden="true">About Me</span>
 
         <h2 id="about-title" className="about__title">
-          Hey, nama gw Azka Aydirrafif Syah
+          Hi, My Name Is Azka Aydirrafif Syah
         </h2>
 
         <p className="about__text">
-          Gw siswa SMK Plus Pelita Nusantara, tinggal di Cibinong. Fokus belajar
-          Website, Mobile, dan Data — sekaligus desainer dan ilustrator. Kombinasi
-          favorit gw: pop color, bold typography, retro, dan sedikit sentuhan komik.
+         I'm a Software Engineering student at SMK Plus Pelita Nusantara, passionate about building web and mobile applications while exploring data-driven solutions. I also enjoy UI design and digital illustration, blending bold typography, vibrant colors, and retro-inspired visuals into my work.
         </p>
 
         <ul className="about__skills" role="list" aria-label="Skill yang dikuasai">
@@ -77,15 +76,7 @@ export default function AboutSection() {
           ))}
         </ul>
 
-        <ul className="about__project-list about__project-list--cta" role="list">
-          <li className="about__all" onMouseEnter={playPop}>
-            <span className="about__project-tag">Semua</span>
-           
-            <span className="about__project-title" aria-label="Cek semua proyek">
-              Cek Semua →
-            </span>
-          </li>
-        </ul>
+       
       </div>
     </section>
   )

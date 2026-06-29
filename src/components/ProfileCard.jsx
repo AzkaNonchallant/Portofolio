@@ -126,7 +126,7 @@ export default function ProfileCard({ onOpen }) {
                 loading="lazy"
                 decoding="async"
                 width={1100}
-                height={1000}
+                height={1100}
                 alt="Foto profil Azka"
                 className="card__photo-img"
               />

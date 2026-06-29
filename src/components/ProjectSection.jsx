@@ -5,16 +5,26 @@ import './ProjectSection.css'
 const PROJECTS = [
   { id: 1, category: 'DESIGN',  categoryColor: 'cat--design',  title: 'Superman Poster',   emoji: '🎇', desc: 'A poster design',                                              stack: ['Photoshop'],                     github: '',                                                          img: '/img/Superman.avif' },
   { id: 2, category: 'MOBILE',  categoryColor: 'cat--mobile',  title: 'Ai Habit Tracker',  emoji: '🌿', desc: 'Productivity Mobile App',                                      stack: ['Flutter', 'Golang'],             github: 'https://github.com/AzkaNonchallant/ai-habit-tracker.git',  img: '/img/ai.avif' },
-  { id: 3, category: 'WEB',     categoryColor: 'cat--web',     title: 'Face Recognition',  emoji: '😁', desc: 'Hand Recognition',                                             stack: ['Python'],                        github: 'https://github.com/AzkaNonchallant/Pengenal-MukaPY.git',  img: '/img/python.avif' },
+  { id: 3, category: 'WEB',     categoryColor: 'cat--web',     title: 'Hand Recognition',  emoji: '😁', desc: 'Hand Recognition',                                             stack: ['Python'],                        github: 'https://github.com/AzkaNonchallant/Pengenal-MukaPY.git',  img: '/img/python.avif' },
   { id: 4, category: 'MOBILE',  categoryColor: 'cat--mobile',  title: 'Rera 3D',           emoji: '🖌', desc: 'Turn your 2D drawing into 3D',                                 stack: ['Flutter', 'Supabase', 'Three-js'], github: '#',                                                        img: '/img/Rera.avif' },
   { id: 5, category: 'WEB',     categoryColor: 'cat--web',     title: 'KPT',               emoji: '⭐', desc: 'Tracking activity on the company',                             stack: ['Code Igniter', 'JS'],            github: 'https://github.com/AzkaNonchallant/kpt.git',               img: null },
   { id: 6, category: 'BACKEND', categoryColor: 'cat--backend', title: 'Pet Tracker',       emoji: '🪸', desc: 'RESTful API for Mobile App',                                   stack: ['Node.js', 'Express', 'Mysql'],   github: '#',                                                         img: '/img/Express.avif' },
   { id: 7, category: 'WEB',     categoryColor: 'cat--web',     title: 'Inventory',         emoji: '🧺', desc: 'Website Tracking Activity With Chart',                         stack: ['Laravel'],                       github: 'https://github.com/AzkaNonchallant/Gudang.git',            img: '/img/inventory.avif' },
   { id: 8, category: 'MOBILE',     categoryColor: 'cat--mobile',     title: 'Iphone',         emoji: '📟', desc: 'Landing Page',                         stack: ['Flutter'],                       github: 'https://github.com/AzkaNonchallant/Landing-Page-nyoba-.git',            img: '/img/Landing.avif' },
   { id: 9, category: 'BACKEND',     categoryColor: 'cat--backend',     title: 'Money Tracker',         emoji: '💰', desc: 'Money Tracking API',                         stack: ['Express', 'Node.js'],                       github: 'https://github.com/AzkaNonchallant/duit-be.git',            img: '/img/Be.avif' },
+  { id: 10, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'LKS',         emoji: '', desc: 'Lomba LKS',                         stack: [''],                       github: '',            img: '/img/sertif/lombalks.avif' },
+  { id: 11, category: 'DESIGN',     categoryColor: 'cat--design',     title: 'Big ben',         emoji: '🎫', desc: 'A Big ben Poster',                         stack: ['Photoshop'],                       github: '',            img: '/img/BB.avif' },
+  { id: 12, category: 'DESIGN',     categoryColor: 'cat--design',     title: 'Jaga Lisan',         emoji: '🥈', desc: 'Poster Pendidikan',                         stack: ['Photoshop'],                       github: '',            img: '/img/Lisan.avif' },
+  { id: 13, category: 'DESIGN',     categoryColor: 'cat--design',     title: 'Riyo Poster',         emoji: '🧨', desc: 'Poster Anime',                         stack: ['Photoshop'],                       github: '',            img: '/img/RIyo.avif' },
+  { id: 14, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'Webinar',         emoji: '', desc: 'Webinar Coding AI',                         stack: [''],                       github: '',            img: '/img/sertif/Serti1.avif' },
+  { id: 15, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'GDG',         emoji: '', desc: 'Event GDG',                         stack: [''],                       github: '',            img: '/img/sertif/serti2.avif' },
+  { id: 16, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'PKL',         emoji: '', desc: 'PKL PT MILLENIA',                         stack: [''],                       github: '',            img: '/img/sertif/serti3.avif' },
+  { id: 17, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'Webinar',         emoji: '', desc: 'Webinar Data Analyst',                         stack: [''],                       github: '',            img: '/img/sertif/serti4.avif' },
+  { id: 18, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'GDG',         emoji: '', desc: 'Event GDG',                         stack: [''],                       github: '',            img: '/img/sertif/serti5.avif' },
+  { id: 19, category: 'CERTIFICATE',     categoryColor: 'cat--certificate',     title: 'Webinar',         emoji: '', desc: 'Webinar CTF',                         stack: [''],                       github: '',            img: '/img/sertif/serti6.avif' },
 ]
 
-const FILTERS = ['ALL PROJECTS', 'WEB', 'MOBILE', 'DESIGN', 'BACKEND']
+const FILTERS = ['ALL PROJECTS', 'WEB', 'MOBILE', 'DESIGN', 'BACKEND', 'CERTIFICATE']
 
 function ProjectCard({ project, onHover }) {
   return (
@@ -88,8 +98,8 @@ export default function ProjectSection({ id }) {
   }, [active, playFilter])
 
   const filtered = active === 'ALL PROJECTS'
-    ? PROJECTS
-    : PROJECTS.filter(p => p.category === active)
+  ? PROJECTS.filter(p => p.category !== 'CERTIFICATE') 
+  : PROJECTS.filter(p => p.category === active)
 
   return (
     <section id={id} className="projects">
@@ -118,6 +128,7 @@ export default function ProjectSection({ id }) {
             {f === 'MOBILE'       && <span className="filter-icon">📱</span>}
             {f === 'DESIGN'       && <span className="filter-icon">✏️</span>}
             {f === 'BACKEND'      && <span className="filter-icon">&lt;/&gt;</span>}
+            {f === 'CERTIFICATE'      && <span className="filter-icon">📃</span>}
             {f}
           </button>
         ))}

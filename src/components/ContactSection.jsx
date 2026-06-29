@@ -1,18 +1,18 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import emailjs from '@emailjs/browser'
 import { Github, Linkedin, Instagram, Mail, MapPin, ArrowRight, Send, User, AtSign, MessageSquare, Tag } from 'lucide-react'
 import './ContactSection.css'
 
-const SERVICE_ID  = 'service_e4kluv8'   
-const TEMPLATE_ID = 'template_ijru59m'  
-const PUBLIC_KEY  = 'h7EXc-LDiZHKN_F2C'   
+const SERVICE_ID  = 'service_e4kluv8'
+const TEMPLATE_ID = 'template_ijru59m'
+const PUBLIC_KEY  = 'h7EXc-LDiZHKN_F2C'
 
 const SOCIALS = [
-  { icon: Github,    label: 'GitHub',    sub: 'AzkaNonchallant',      href: 'https://github.com/AzkaNonchallant' },
-  { icon: Linkedin,  label: 'LinkedIn',  sub: 'azka aydirrafif', href: 'https://www.linkedin.com/in/azka-aydirrafif-590005373/' },
-  { icon: Instagram, label: 'Instagram', sub: 'azkarafif42',              href: 'https://www.instagram.com/azkarafif42/?__pwa=1' },
-  { icon: Mail,      label: 'Email',     sub: 'azkaaydirrafsyah@gmail.com',       href: 'mailto:azkaaydirrafsyah@gmail.com' },
-  { icon: MapPin,    label: 'Location',  sub: 'Cibinong, Indonesia',           href: '#' },
+  { icon: Github,    label: 'GitHub',    sub: 'AzkaNonchallant',           href: 'https://github.com/AzkaNonchallant' },
+  { icon: Linkedin,  label: 'LinkedIn',  sub: 'azka aydirrafif',           href: 'https://www.linkedin.com/in/azka-aydirrafif-590005373/' },
+  { icon: Instagram, label: 'Instagram', sub: 'azkarafif42',               href: 'https://www.instagram.com/azkarafif42/?__pwa=1' },
+  { icon: Mail,      label: 'Email',     sub: 'azkaaydirrafsyah@gmail.com', href: 'mailto:azkaaydirrafsyah@gmail.com' },
+  { icon: MapPin,    label: 'Location',  sub: 'Cibinong, Indonesia',        href: '#' },
 ]
 
 export default function ContactSection() {
@@ -20,6 +20,18 @@ export default function ContactSection() {
   const [sent, setSent]       = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError]     = useState(null)
+
+  const tagSoundRef = useRef(null)
+  const tagLoaded   = useRef(false)
+
+  const playTagPop = useCallback(() => {
+    const a = tagSoundRef.current
+    if (!a) return
+    if (!tagLoaded.current) { a.load(); tagLoaded.current = true }
+    a.currentTime = 0
+    a.volume = 0.35
+    a.play().catch(() => {})
+  }, [])
 
   const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
@@ -44,7 +56,6 @@ export default function ContactSection() {
       setForm({ name: '', email: '', subject: '', message: '' })
       setTimeout(() => setSent(false), 4000)
     } catch (err) {
-      console.error('Gagal kirim:', err)
       setError('Gagal kirim pesan, coba lagi.')
     } finally {
       setLoading(false)
@@ -53,6 +64,7 @@ export default function ContactSection() {
 
   return (
     <section className="contact">
+      <audio ref={tagSoundRef} src="/sounds/pop.mp3" preload="none" />
 
       <div className="contact__left">
         <div className="contact__header">
@@ -61,8 +73,7 @@ export default function ContactSection() {
         </div>
         <div className="contact__wave">__________________________</div>
         <p className="contact__desc">
-         Lets Colaborate<br />
-          
+          Lets Colaborate<br />
         </p>
 
         <div className="contact__form">
@@ -134,7 +145,7 @@ export default function ContactSection() {
           <div className="contact__form-footer">
             <button
               type="button"
-              className={`contact__btn ${sent ? 'contact__btn--sent' : ''} ${loading ? 'contact__btn--loading' : ''}`}
+              className={`contact__btn${sent ? ' contact__btn--sent' : ''}${loading ? ' contact__btn--loading' : ''}`}
               onClick={handleSubmit}
               disabled={loading || sent}
             >
@@ -157,7 +168,14 @@ export default function ContactSection() {
 
         <div className="contact__socials">
           {SOCIALS.map(({ icon: Icon, label, sub, href }) => (
-            <a key={label} href={href} className="contact__social-item" target="_blank" rel="noopener noreferrer">
+            <a
+              key={label}
+              href={href}
+              className="contact__social-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={playTagPop}  
+            >
               <div className="contact__social-icon">
                 <Icon size={20} strokeWidth={1.8} />
               </div>
@@ -173,12 +191,9 @@ export default function ContactSection() {
 
       <div className="contact__footer">
         <span className="contact__icon-sm">🐚</span>
-        <p className="contact__footer-text">
-          Open to collaborate
-        </p>
+        <p className="contact__footer-text">Open to collaborate</p>
         <span className="contact__wave-sm">_____________</span>
       </div>
-
     </section>
   )
 }

@@ -80,7 +80,7 @@
 
 .projects__filter-btn:hover {
   border-color: var(--blue-deep);
-  color: var(--blue-deep);
+  color: var(--blue);
 }
 
 .projects__filter-btn--active {
@@ -142,6 +142,7 @@
 .cat--mobile  { background: #2d8c9e; color: #fff; }
 .cat--web     { background: #0d2137; color: #fff; }
 .cat--backend { background: #7c4daa; color: #fff; }
+.cat--certificate { background: #4c32dc; color: #fff; }
 .cat--fullstack { background: #e8a020; color: #fff; }
 
 .project-card__body {
