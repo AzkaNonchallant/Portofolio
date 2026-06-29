@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { X, Minus } from 'lucide-react'
-import './DesktopWindow.css'
+import './desktopWindow.css'
 
 function useIsMobile(breakpoint = 768) {
  const [isMobile, setIsMobile] = useState(false)
