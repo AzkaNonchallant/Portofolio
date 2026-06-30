@@ -74,18 +74,37 @@ function Shell({ className }) {
 function OceanDecorations() {
   return (
     <>
+      {/* Seaweed */}
       <Seaweed className="decor__shape decor__seaweed decor__seaweed--a" />
       <Seaweed className="decor__shape decor__seaweed decor__seaweed--b" />
       <Seaweed className="decor__shape decor__seaweed decor__seaweed--c" />
+      <Seaweed className="decor__shape decor__seaweed decor__seaweed--d" />
+      <Seaweed className="decor__shape decor__seaweed decor__seaweed--e" />
+
+      {/* Bubble */}
       <Bubble className="decor__shape decor__bubble decor__bubble--a" />
       <Bubble className="decor__shape decor__bubble decor__bubble--b" />
       <Bubble className="decor__shape decor__bubble decor__bubble--c" />
       <Bubble className="decor__shape decor__bubble decor__bubble--d" />
       <Bubble className="decor__shape decor__bubble decor__bubble--e" />
+      <Bubble className="decor__shape decor__bubble decor__bubble--f" />
+      <Bubble className="decor__shape decor__bubble decor__bubble--g" />
+      <Bubble className="decor__shape decor__bubble decor__bubble--h" />
+      <Bubble className="decor__shape decor__bubble decor__bubble--i" />
+      <Bubble className="decor__shape decor__bubble decor__bubble--j" />
+      <Bubble className="decor__shape decor__bubble decor__bubble--k" />
+
+      {/* Starfish */}
       <Starfish className="decor__shape decor__starfish decor__starfish--a" />
       <Starfish className="decor__shape decor__starfish decor__starfish--b" />
+      <Starfish className="decor__shape decor__starfish decor__starfish--c" />
+      <Starfish className="decor__shape decor__starfish decor__starfish--d" />
+
+      {/* Shell */}
       <Shell className="decor__shape decor__shell decor__shell--a" />
       <Shell className="decor__shape decor__shell decor__shell--b" />
+      <Shell className="decor__shape decor__shell decor__shell--c" />
+      <Shell className="decor__shape decor__shell decor__shell--d" />
     </>
   )
 }
@@ -141,7 +160,6 @@ function SquidMascot() {
     }, delay)
   }, [set])
 
-  // Use requestIdleCallback so mascot doesn't block initial paint
   useEffect(() => {
     const id = typeof requestIdleCallback !== 'undefined'
       ? requestIdleCallback(() => { setMounted(true); scheduleNextBlink() })
@@ -192,7 +210,6 @@ function SquidMascot() {
     }
   }, [busy, theme, toggleTheme, showBubble, clearAll, set, scheduleNextBlink])
 
-  // Keyboard accessibility
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
@@ -240,7 +257,6 @@ function SquidMascot() {
   )
 }
 
-// ---------- AnglerfishMascot ----------
 function AnglerfishMascot() {
   const { theme, toggleTheme } = useTheme()
   const [frame, setFrame]             = useState(0)
@@ -365,16 +381,22 @@ function AnglerfishMascot() {
 export default function BackgroundDecor() {
   return (
     <>
-     
       <div className="decor" aria-hidden="true">
         <Star     className="decor__shape decor__shape--pink   decor__shape--a" />
         <Star     className="decor__shape decor__shape--cream  decor__shape--b" />
+        <Star     className="decor__shape decor__shape--pink   decor__shape--g" />
         <Diamond  className="decor__shape decor__shape--yellow decor__shape--c" />
+        <Diamond  className="decor__shape decor__shape--cream  decor__shape--h" />
         <Triangle className="decor__shape decor__shape--cream  decor__shape--d" />
+        <Triangle className="decor__shape decor__shape--yellow decor__shape--i" />
         <Diamond  className="decor__shape decor__shape--pink   decor__shape--e" />
         <Star     className="decor__shape decor__shape--yellow decor__shape--f" />
+
+        <Star     className="decor__shape decor__shape--cream  decor__shape--j" />
+        <Diamond  className="decor__shape decor__shape--yellow decor__shape--k" />
+        <Triangle className="decor__shape decor__shape--pink   decor__shape--l" />
+
         <OceanDecorations />
-        
       </div>
       <SquidMascot />
       <AnglerfishMascot />
