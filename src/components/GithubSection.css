@@ -1,0 +1,313 @@
+.gh-section {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 920px);
+  margin: 24px auto 0;
+  background: var(--cream);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 0 0 6px var(--pink),
+    0 0 0 9px var(--ink),
+    0 18px 40px rgba(14, 38, 66, 0.35);
+  padding: 24px 28px;
+}
+
+/* ---------- Header ---------- */
+.gh-section__header { margin-bottom: 16px; }
+
+.gh-section__title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.gh-section__icon { font-size: 1.6rem; }
+
+.gh-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1;
+  margin: 0;
+}
+
+.gh-section__link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--pink);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: var(--border-thin) solid var(--pink);
+  border-radius: var(--radius-pill);
+  transition: background 0.15s, color 0.15s;
+  margin-left: auto;
+}
+
+.gh-section__link:hover {
+  background: var(--pink);
+  color: var(--cream-soft);
+}
+
+.gh-section__rule {
+  border: none;
+  border-top: var(--border-thick) solid var(--ink);
+}
+
+/* ---------- Tabs ---------- */
+.gh-section__tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.gh-tab {
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  border: var(--border-thin) solid var(--ink);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.gh-tab:hover { background: var(--cream-soft); }
+
+.gh-tab--active {
+  background: var(--ink);
+  color: var(--cream-soft);
+}
+
+/* ---------- Status ---------- */
+.gh-section__status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.55;
+  padding: 20px 0;
+  text-align: center;
+}
+.gh-section__status--err { color: var(--pink-dark); opacity: 1; }
+
+/* ---------- Calendar ---------- */
+.gh-chart-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  filter: hue-rotate(160deg) saturate(1.2);
+}
+
+.gh-calendar__empty {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  opacity: 0.5;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ---------- Languages ---------- */
+.gh-langs__bar {
+  display: flex;
+  height: 12px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-bottom: 16px;
+  gap: 2px;
+}
+
+.gh-langs__segment {
+  height: 100%;
+  border-radius: 2px;
+  transition: opacity 0.15s;
+}
+.gh-langs__segment:hover { opacity: 0.7; }
+
+.gh-langs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  list-style: none;
+}
+
+.gh-langs__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.gh-langs__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.gh-langs__name { color: var(--ink); }
+
+.gh-langs__pct {
+  color: var(--pink);
+  font-size: 0.65rem;
+}
+
+/* ---------- Repos ---------- */
+.gh-repos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.gh-repo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  background: var(--cream-soft);
+  border: var(--border-thin) solid var(--ink);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.gh-repo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(14, 38, 66, 0.15);
+  border-color: var(--pink);
+}
+
+.gh-repo__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gh-repo__icon { font-size: 1rem; flex-shrink: 0; }
+
+.gh-repo__name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gh-repo__lang {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--yellow);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.gh-repo__desc {
+  font-size: 0.78rem;
+  color: var(--ink);
+  opacity: 0.65;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gh-repo__footer {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.gh-repo__stat {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--ink);
+  opacity: 0.55;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .gh-section { padding: 16px; }
+  .gh-repos { grid-template-columns: 1fr; }
+  .gh-section__tabs { gap: 6px; }
+  .gh-tab { padding: 5px 12px; font-size: 0.65rem; }
+}
+
+.gh-panel--center {
+  display: flex;
+  justify-content: center;
+}
+
+.gh-stats-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ---------- Calendar ---------- */
+.gh-cal { display: flex; flex-direction: column; gap: 10px; }
+
+.gh-cal__total {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--pink);
+  margin: 0;
+}
+
+.gh-cal__grid {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.gh-cal__week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gh-cal__cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.gh-cal__cell--0 { background: var(--cream-soft); border: 1px solid var(--ink); opacity: 0.3; }
+.gh-cal__cell--1 { background: var(--pink); opacity: 0.3; }
+.gh-cal__cell--2 { background: var(--pink); opacity: 0.55; }
+.gh-cal__cell--3 { background: var(--pink); opacity: 0.8; }
+.gh-cal__cell--4 { background: var(--pink); opacity: 1; }
+
+.gh-cal__legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--ink);
+  opacity: 0.6;
+}

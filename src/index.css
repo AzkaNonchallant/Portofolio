@@ -1,28 +1,77 @@
-
 :root {
-  
-  --blue: #0B3C5D;
-  --red-deep: #072A40;
-  --blue-deep: #4691d6;
-  --cream: #EAF6FF;
-  --cream-soft: #F5FBFF;
-  --pink: #4DB6AC;
-  --pink-dark: #2E8B83;
-  --yellow: #7DD3FC;
-  --tan: #6EC6FF;
-  --ink: #0F172A;
-  --squid-recolor: hue-rotate(160deg) saturate(1.25) brightness(1.05);
+
+  --blue:       #cecdcd;    
+  --red-deep:   #e0e0e0;      
+  --blue-deep:  #1a1a1a;      
+  --cream:      #ffffff;      
+  --cream-soft: #f5f5f5;      
+  --pink:       #1a1a1a;     
+  --pink-dark:  #000000;     
+  --yellow:     #555555;      
+  --tan:        #888888;      
+  --ink:        #000000;      
 
   --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
-  --font-body: 'Baloo 2', 'Segoe UI', sans-serif;
-  --font-mono: 'Space Mono', 'Courier New', monospace;
-
+  --font-body:    'Baloo 2', 'Segoe UI', sans-serif;
+  --font-mono:    'Space Mono', 'Courier New', monospace;
 
   --radius-card: 28px;
   --radius-pill: 999px;
   --border-thick: 3px;
-  --border-thin: 2px;
+  --border-thin:  2px;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--blue);
+  -webkit-font-smoothing: antialiased;
+}
+
+img  { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+a { color: inherit; }
+
+
+.halftone {
+  position: relative;
+  background-color: var(--blue);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.12) 1.4px,
+    transparent 1.6px
+  );
+  background-size: 13px 13px;
+}
+
+.halftone--deep {
+  background-color: var(--red-deep);
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.1) 1.4px,
+    transparent 1.6px
+  );
+  background-size: 11px 11px;
+}
+
+.outline {
+  border: var(--border-thick) solid var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
 
 [data-theme="dark"] {
   --blue: #202027;        
@@ -72,34 +121,6 @@ a {
 }
 
 
-.halftone {
-  position: relative;
-  background-color: var(--blue);
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.16) 1.4px,
-    transparent 1.6px
-  );
-  background-size: 13px 13px;
-}
-
-.halftone--deep {
-  background-color: var(--red-deep);
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.1) 1.4px,
-    transparent 1.6px
-  );
-  background-size: 11px 11px;
-}
-
-.outline {
-  border: var(--border-thick) solid var(--ink);
-}
-
-
-:focus-visible {
-  outline: 3px solid var(--yellow);
-  outline-offset: 2px;
-}
 
 
  /* @media (prefers-reduced-motion: reduce) {

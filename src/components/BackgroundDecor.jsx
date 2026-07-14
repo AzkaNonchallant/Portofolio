@@ -91,8 +91,7 @@ function OceanDecorations() {
 }
 
 const SQUID_LINES = [
-  "Halo! 👋",
-  "Klik Angler Untuk Kembali Ke Tema Sebelumnya!",
+
 ]
 const INK_DURATION   = 1800
 const LIGHT_DURATION = 1800

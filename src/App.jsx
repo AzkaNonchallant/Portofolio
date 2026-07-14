@@ -2,6 +2,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/themeContext.jsx'
+
 import './App.css'
 
 
@@ -14,6 +15,7 @@ const AboutSection   = lazy(() => import('./components/AboutSection.jsx'))
 const ProjectSection = lazy(() => import('./components/ProjectSection.jsx'))
 const ContactSection = lazy(() => import('./components/ContactSection.jsx'))
 const Contact        = lazy(() => import('./pages/Contact.jsx'))
+const GithubSection = lazy(() => import('./components/GithubSection.jsx'))
 
 
 import { useWindowManager } from './desktop/windowManager.jsx'
@@ -40,6 +42,7 @@ function Home() {
       </Suspense>
       <div className="page__content">
         <ProfileCard onOpen={openWindow} />
+        <GithubSection />
         <SiteFooter />
       </div>
     </main>
