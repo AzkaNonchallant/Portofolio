@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import './GitHubSection.css'
+import './GithubSection.css'
 
 const GITHUB_USERNAME = 'AzkaNonchallant'
 const TOKEN = import.meta.env.VITE_GITHUB_TOKEN
