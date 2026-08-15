@@ -108,7 +108,7 @@ export default function ProjectSection({ id }) {
 
       <div className="projects__header">
         <div className="projects__title-row">
-          <span className="projects__icon">🐚</span>
+          <span className="projects__icon"></span>
           <h2 className="projects__title">PROJECTS</h2>
           <span className="projects__wave">〰〰〰</span>
         </div>
@@ -124,11 +124,11 @@ export default function ProjectSection({ id }) {
             onClick={() => handleFilter(f)}
           >
             {f === 'ALL PROJECTS' && <span className="filter-icon">⊞</span>}
-            {f === 'WEB'          && <span className="filter-icon">🌐</span>}
-            {f === 'MOBILE'       && <span className="filter-icon">📱</span>}
-            {f === 'DESIGN'       && <span className="filter-icon">✏️</span>}
-            {f === 'BACKEND'      && <span className="filter-icon">&lt;/&gt;</span>}
-            {f === 'CERTIFICATE'      && <span className="filter-icon">📃</span>}
+            {f === 'WEB'          && <span className="filter-icon"></span>}
+            {f === 'MOBILE'       && <span className="filter-icon"></span>}
+            {f === 'DESIGN'       && <span className="filter-icon"></span>}
+            {f === 'BACKEND'      && <span className="filter-icon"></span>}
+            {f === 'CERTIFICATE'      && <span className="filter-icon"></span>}
             {f}
           </button>
         ))}
