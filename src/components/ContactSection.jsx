@@ -68,7 +68,7 @@ export default function ContactSection() {
 
       <div className="contact__left">
         <div className="contact__header">
-          <span className="contact__icon">🐚</span>
+          <span className="contact__icon"></span>
           <h2 className="contact__title">CONTACT ME</h2>
         </div>
         <div className="contact__wave">__________________________</div>
@@ -154,7 +154,7 @@ export default function ContactSection() {
               {!loading && !sent && <ArrowRight size={15} strokeWidth={2.5} />}
             </button>
             {error && <p className="contact__error">{error}</p>}
-            {!error && <p className="contact__note">🐢 Usually replies within 24 hours.</p>}
+            {!error && <p className="contact__note"> Usually replies within 24 hours.</p>}
           </div>
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function ContactSection() {
       </div>
 
       <div className="contact__footer">
-        <span className="contact__icon-sm">🐚</span>
+        <span className="contact__icon-sm"></span>
         <p className="contact__footer-text">Open to collaborate</p>
         <span className="contact__wave-sm">_____________</span>
       </div>

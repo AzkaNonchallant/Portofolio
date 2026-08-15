@@ -5,9 +5,9 @@ const GITHUB_USERNAME = 'AzkaNonchallant'
 const TOKEN = import.meta.env.VITE_GITHUB_TOKEN
 
 const TABS = [
-  { id: 'calendar', label: '📅 Calendar' },
-  { id: 'langs',    label: '💻 Languages' },
-  { id: 'repos',    label: '📁 Repos' },
+  { id: 'calendar', label: 'Calendar' },
+  { id: 'langs',    label: 'Languages' },
+  { id: 'repos',    label: 'Repos' },
 ]
 
 const LANG_COLORS = [
